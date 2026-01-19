@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+ * TecnoActual Design System
+ * Based on Brand Guidelines
+ * Primary: Blue #689FF1 (Tecno - Technology, Trust)
+ * Secondary: Orange #F59E0B (Actual - Energy, Innovation)
+ */
+
+@layer base {
+  :root {
+    /* Core Brand Colors */
+    --tecno-blue: 215 85% 68%;
+    --actual-orange: 38 94% 50%;
+    
+    /* Background & Foreground */
+    --background: 220 20% 97%;
+    --foreground: 220 25% 12%;
+
+    /* Card Surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 12%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 12%;
+
+    /* Primary (Blue Tecno) */
+    --primary: 215 85% 68%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary (Orange Actual) */
+    --secondary: 38 94% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted */
+    --muted: 220 15% 92%;
+    --muted-foreground: 220 10% 45%;
+
+    /* Accent */
+    --accent: 215 85% 95%;
+    --accent-foreground: 215 85% 35%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders & Inputs */
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 215 85% 68%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 25% 12%;
+    --sidebar-primary: 215 85% 68%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 95%;
+    --sidebar-accent-foreground: 220 25% 12%;
+    --sidebar-border: 220 15% 90%;
+    --sidebar-ring: 215 85% 68%;
+
+    /* Custom Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(215 85% 68%) 0%, hsl(215 85% 55%) 100%);
+    --gradient-orange: linear-gradient(135deg, hsl(38 94% 50%) 0%, hsl(38 94% 42%) 100%);
+    --gradient-dark: linear-gradient(135deg, hsl(220 25% 12%) 0%, hsl(220 25% 18%) 100%);
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(215 85% 68% / 0.15);
+    --shadow-card: 0 2px 12px -2px hsl(220 25% 12% / 0.08);
+    --shadow-elevated: 0 12px 40px -12px hsl(220 25% 12% / 0.15);
+  }
+
+  .dark {
+    --background: 220 25% 8%;
+    --foreground: 220 15% 95%;
+
+    --card: 220 25% 12%;
+    --card-foreground: 220 15% 95%;
+
+    --popover: 220 25% 12%;
+    --popover-foreground: 220 15% 95%;
+
+    --primary: 215 85% 68%;
+    --primary-foreground: 220 25% 8%;
+
+    --secondary: 38 94% 50%;
+    --secondary-foreground: 220 25% 8%;
+
+    --muted: 220 20% 18%;
+    --muted-foreground: 220 10% 60%;
+
+    --accent: 215 85% 20%;
+    --accent-foreground: 215 85% 80%;
+
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 215 85% 68%;
+
+    --sidebar-background: 220 25% 10%;
+    --sidebar-foreground: 220 15% 95%;
+    --sidebar-primary: 215 85% 68%;
+    --sidebar-primary-foreground: 220 25% 8%;
+    --sidebar-accent: 220 20% 15%;
+    --sidebar-accent-foreground: 220 15% 95%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 215 85% 68%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl;
+  }
+}
+
+@layer components {
+  /* Logo Text Styling */
+  .logo-tecno {
+    @apply font-bold text-primary;
+  }
+
+  .logo-actual {
+    @apply font-extrabold text-secondary;
+  }
+
+  .logo-com {
+    @apply font-extrabold text-secondary text-sm;
+  }
+
+  /* Gradient Backgrounds */
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-gradient-orange {
+    background: var(--gradient-orange);
+  }
+
+  .bg-gradient-dark {
+    background: var(--gradient-dark);
+  }
+
+  /* Card Styles */
+  .card-elevated {
+    @apply bg-card rounded-xl border border-border;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .card-elevated:hover {
+    box-shadow: var(--shadow-elevated);
+    transform: translateY(-2px);
+  }
+
+  /* Button Enhancements */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-lg;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    @apply opacity-90;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 24px -6px hsl(var(--primary) / 0.3);
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground font-semibold px-6 py-3 rounded-lg;
+    transition: all 0.2s ease;
+  }
+
+  .btn-secondary:hover {
+    @apply opacity-90;
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary text-primary font-semibold px-6 py-3 rounded-lg bg-transparent;
+    transition: all 0.2s ease;
+  }
+
+  .btn-outline:hover {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  /* Section Containers */
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .section-dark {
+    @apply bg-foreground text-background py-16 md:py-24;
+  }
+
+  /* Feature Cards */
+  .feature-card {
+    @apply bg-card p-6 md:p-8 rounded-xl border border-border;
+    box-shadow: var(--shadow-card);
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover {
+    box-shadow: var(--shadow-elevated);
+    transform: translateY(-4px);
+    border-color: hsl(var(--primary) / 0.3);
+  }
+
+  /* Navigation Link */
+  .nav-link {
+    @apply relative text-muted-foreground font-medium transition-colors duration-200;
+  }
+
+  .nav-link:hover {
+    @apply text-foreground;
+  }
+
+  .nav-link.active {
+    @apply text-primary;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 origin-left transition-transform duration-200;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    @apply scale-x-100;
+  }
+}
+
+@layer utilities {
+  /* Text Gradient */
+  .text-gradient-brand {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+  }
+
+  /* Backdrop blur */
+  .glass {
+    @apply bg-background/80 backdrop-blur-lg;
+  }
+
+  /* Focus ring */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background;
+  }
+
+  /* Animation delays */
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+}
