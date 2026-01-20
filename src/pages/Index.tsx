@@ -31,13 +31,13 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative overflow-hidden min-h-[90vh] flex items-center">
         {/* Background Image */}
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${heroBg})` }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/40" />
         </div>
-        
+
         <div className="container relative z-10 py-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -88,9 +88,9 @@ const Index = () => {
                 transition={{ duration: 0.6 }}
                 className="relative rounded-2xl overflow-hidden shadow-elevated"
               >
-                <img 
-                  src={teamAbout} 
-                  alt="Equipo TecnoActual" 
+                <img
+                  src={teamAbout}
+                  alt="Equipo TecnoActual"
                   className="w-full h-[400px] object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
@@ -242,41 +242,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Special Promotion - Simplified */}
-      <section className="section">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-3xl mx-auto"
-          >
-            <Card className="feature-card overflow-hidden border-2 border-secondary/30">
-              <div className="grid md:grid-cols-2">
-                <div className="bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center p-12">
-                  <div className="text-center">
-                    <span className="text-7xl md:text-8xl font-bold text-primary-foreground">20%</span>
-                    <p className="text-primary-foreground/80 text-lg mt-2">de descuento</p>
-                  </div>
-                </div>
-                <div className="p-8 flex flex-col justify-center">
-                  <p className="text-secondary font-semibold mb-2">Promoción Especial</p>
-                  <h3 className="text-2xl font-bold mb-4">Descuentos en software empresarial</h3>
-                  <p className="text-muted-foreground mb-6">
-                    Consulta con nuestros asesores las promociones disponibles para tu empresa.
-                  </p>
-                  <Button asChild className="btn-secondary w-full">
-                    <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                      <MessageCircle className="mr-2" size={18} />
-                      Contacta con un asesor
-                    </a>
-                  </Button>
-                </div>
-              </div>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
+
     </Layout>
   );
 };

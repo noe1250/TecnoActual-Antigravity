@@ -40,12 +40,7 @@ const Header = () => {
           ))}
         </div>
 
-        {/* CTA Button - Links to Marcas */}
-        <div className="hidden md:block">
-          <Button asChild variant="default" className="btn-primary">
-            <Link to="/marcas">Ver Marcas</Link>
-          </Button>
-        </div>
+
 
         {/* Mobile Menu Button */}
         <button
@@ -71,11 +66,10 @@ const Header = () => {
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`py-3 px-4 rounded-lg font-medium transition-colors ${
-                    isActive(item.href)
+                  className={`py-3 px-4 rounded-lg font-medium transition-colors ${isActive(item.href)
                       ? "bg-accent text-primary"
                       : "hover:bg-muted"
-                  }`}
+                    }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.name}
