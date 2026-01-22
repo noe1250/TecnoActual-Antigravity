@@ -22,7 +22,7 @@ const stagger = {
 };
 
 const WHATSAPP_NUMBER = "528181880009";
-const WHATSAPP_MESSAGE = encodeURIComponent("Hola, me interesa información sobre sus soluciones de software.");
+const WHATSAPP_MESSAGE = encodeURIComponent("Hola, me interesa información sobre sus soluciones de software para mi empresa.");
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 
 const Index = () => {
