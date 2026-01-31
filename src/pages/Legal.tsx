@@ -17,7 +17,7 @@ const legalSections = [
       sections: [
         {
           title: "Identidad y Domicilio",
-          content: "TecnoActual, con domicilio en Monterrey, Nuevo León, México, es responsable del tratamiento de sus datos personales."
+          content: "TecnoActual, con domicilio en Alianza Sur 303 int 316 Parque de Investigación e Innovación Tecnológica (PIIT) Apodaca, Nuevo Leon., es responsable del tratamiento de sus datos personales."
         },
         {
           title: "Datos Personales que Recabamos",

@@ -42,8 +42,8 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    value: "ventas@tecnoactual.com",
-    href: "mailto:ventas@tecnoactual.com",
+    value: "eduardoe@tecnoactual.com",
+    href: "mailto:eduardoe@tecnoactual.com",
   },
   {
     icon: Phone,
@@ -275,8 +275,8 @@ const Contacto = () => {
               {contactInfo.map((item, index) => (
                 <Card key={index} className="feature-card">
                   <CardContent className="p-6">
-                    <a 
-                      href={item.href} 
+                    <a
+                      href={item.href}
                       target={item.title === "WhatsApp" ? "_blank" : undefined}
                       rel={item.title === "WhatsApp" ? "noopener noreferrer" : undefined}
                       className="flex items-start gap-4 group"
@@ -300,7 +300,9 @@ const Contacto = () => {
                 <div className="h-48 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
                   <div className="text-center">
                     <MapPin className="text-primary mx-auto mb-2" size={32} />
-                    <p className="font-medium">Monterrey, N.L.</p>
+                    <p className="font-medium px-4">
+                      Alianza Sur 303 int 316 Parque de Investigación e Innovación Tecnológica (PIIT) Apodaca, Nuevo Leon.
+                    </p>
                   </div>
                 </div>
               </Card>

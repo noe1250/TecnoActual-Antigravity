@@ -86,8 +86,8 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-primary" />
-                <a href="mailto:ventas@tecnoactual.com" className="text-background/80 hover:text-background transition-colors">
-                  ventas@tecnoactual.com
+                <a href="mailto:eduardoe@tecnoactual.com" className="text-background/80 hover:text-background transition-colors">
+                  eduardoe@tecnoactual.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
@@ -98,7 +98,9 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <MapPin size={18} className="text-primary" />
-                <span className="text-background/80">Monterrey, N.L.</span>
+                <span className="text-background/80">
+                  Alianza Sur 303 int 316 Parque de Investigación e Innovación Tecnológica (PIIT) Apodaca, Nuevo Leon.
+                </span>
               </li>
             </ul>
           </div>

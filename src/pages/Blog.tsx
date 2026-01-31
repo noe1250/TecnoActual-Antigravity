@@ -6,22 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const blogPosts = [
-  {
-    id: 1,
-    title: "Microsoft 365 con 20% de descuento - Promoción Noviembre",
-    excerpt: "Este mes tenemos una promoción especial en licencias de Microsoft 365 para empresas. Obtén Word, Excel, PowerPoint, Teams y más con un descuento del 20%. Válido hasta el 30 de noviembre de 2025.",
-    date: "4 de Noviembre, 2025",
-    category: "Promociones",
-    color: "primary",
-  },
-  {
-    id: 2,
-    title: "Adobe Creative Cloud: Descuentos por volumen",
-    excerpt: "¿Tu equipo creativo necesita las mejores herramientas? Tenemos precios especiales en licencias de Adobe Creative Cloud para equipos de 10 o más usuarios. Incluye acceso a Photoshop, Illustrator, InDesign, Premiere Pro, After Effects y más de 20 aplicaciones creativas.",
-    date: "1 de Noviembre, 2025",
-    category: "Promociones",
-    color: "secondary",
-  },
+
   {
     id: 3,
     title: "¿Por qué cambiar a software por suscripción?",
@@ -78,11 +63,10 @@ const Blog = () => {
                   <div className={`h-3 ${post.color === 'primary' ? 'bg-primary' : 'bg-secondary'}`} />
                   <CardHeader>
                     <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
-                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                        post.color === 'primary' 
-                          ? 'bg-primary/10 text-primary' 
+                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${post.color === 'primary'
+                          ? 'bg-primary/10 text-primary'
                           : 'bg-secondary/10 text-secondary'
-                      }`}>
+                        }`}>
                         {post.category}
                       </span>
                       <div className="flex items-center gap-1">

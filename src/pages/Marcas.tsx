@@ -8,6 +8,7 @@ import solidworksImg from "@/assets/products/solidworks.jpg";
 import workstationsImg from "@/assets/products/workstations.jpg";
 import microsoft365Img from "@/assets/products/microsoft365.jpg";
 import googleWorkspaceImg from "@/assets/products/google-workspace.jpg";
+import hardwareAccessoriesImg from "@/assets/products/hardware-accessories.png";
 import zoomImg from "@/assets/products/zoom.jpg";
 
 const WHATSAPP_NUMBER = "528181880009";
@@ -67,15 +68,15 @@ const products = [
     ],
   },
   {
-    name: "Google Workspace",
-    description: "Herramientas de Google para profesionales",
-    image: googleWorkspaceImg,
+    name: "Hardware y Accesorios",
+    description: "Complementos esenciales para tu espacio de trabajo",
+    image: hardwareAccessoriesImg,
     features: [
-      "Gmail para tu negocio",
-      "Drive con almacenamiento amplio",
-      "Videoconferencias sin límites",
-      "Panel de administración centralizado",
-      "Colaboración en tiempo real",
+      "Monitores de alta resolución",
+      "Periféricos ergonómicos",
+      "Soluciones de almacenamiento",
+      "Accesorios para videoconferencia",
+      "Componentes de actualización",
     ],
   },
   {
@@ -133,14 +134,14 @@ const Marcas = () => {
                   <Card className="feature-card h-full flex flex-col overflow-hidden">
                     {/* Product Image */}
                     <div className="relative h-48 overflow-hidden">
-                      <img 
-                        src={product.image} 
+                      <img
+                        src={product.image}
                         alt={product.name}
                         className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
                     </div>
-                    
+
                     <CardHeader>
                       <CardTitle className="text-xl">{product.name}</CardTitle>
                       <CardDescription>{product.description}</CardDescription>
