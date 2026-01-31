@@ -109,7 +109,7 @@ const Index = () => {
                     Hoy, el mercado ha cambiado y los modelos de consumo también. Las empresas ya no quieren invertir grandes sumas en licencias que se vuelven obsoletas. Ahora buscan suscripciones y modelos de renta que les permitan tener siempre las herramientas más actuales sin preocupaciones.
                   </p>
                   <p className="text-foreground font-medium">
-                    Por eso, en TecnoActual nos hemos especializado en software de última generación por suscripción. Queremos que tu empresa tenga acceso a las mejores herramientas, siempre actualizadas, para mantenerse competitiva en un mercado que no se detiene.
+                    Por eso, en TecnoActual nos hemos especializado en software de última generación por suscripción. Queremos que tu empresa tenga acceso a las mejores herramientas profesionales, siempre actualizadas, para mantenerse competitiva en un mercado que no se detiene.
                   </p>
                 </div>
               </div>
