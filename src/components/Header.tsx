@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "./Logo";
 import { Button } from "./ui/button";
-
+import logoHeader from "@/assets/logo-header.png";
 const navigation = [
   { name: "Inicio", href: "/" },
   { name: "Marcas", href: "/marcas" },
@@ -25,7 +25,9 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-border">
       <nav className="container mx-auto flex items-center justify-between py-4">
-        <Logo size="md" />
+        <Link to="/" className="flex-shrink-0">
+          <img src={logoHeader} alt="TecnoActual" className="h-10 w-auto" />
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
@@ -67,8 +69,8 @@ const Header = () => {
                   key={item.name}
                   to={item.href}
                   className={`py-3 px-4 rounded-lg font-medium transition-colors ${isActive(item.href)
-                      ? "bg-accent text-primary"
-                      : "hover:bg-muted"
+                    ? "bg-accent text-primary"
+                    : "hover:bg-muted"
                     }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >

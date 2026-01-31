@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
+import logoFooter from "@/assets/logo-footer.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,11 +11,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Column */}
           <div className="space-y-4">
-            <div className="inline-flex items-baseline">
-              <span className="font-bold text-2xl text-primary">tecno</span>
-              <span className="font-extrabold text-2xl text-secondary">actual</span>
-              <span className="font-extrabold text-secondary text-xs ml-0.5">.com</span>
-            </div>
+            <Link to="/" className="inline-block">
+              <img src={logoFooter} alt="TecnoActual" className="h-10 w-auto" />
+            </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Más de 20 años ayudando a empresas con soluciones de software por suscripción.
             </p>
