@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Check, ArrowRight, MessageCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -20,6 +21,7 @@ const products = [
     name: "SketchUp Pro / Studio",
     description: "Software líder en diseño 2D y 3D para arquitectura y construcción",
     image: sketchupImg,
+    showPlans: true,
     features: [
       "Modelado 3D intuitivo y potente",
       "Extension Warehouse con miles de plugins",
@@ -72,7 +74,7 @@ const products = [
     description: "Complementos esenciales para tu espacio de trabajo",
     image: hardwareAccessoriesImg,
     features: [
-      "Monitores de alta resolución",
+      "Monitors de alta resolución",
       "Periféricos ergonómicos",
       "Soluciones de almacenamiento",
       "Accesorios para videoconferencia",
@@ -155,11 +157,20 @@ const Marcas = () => {
                           </li>
                         ))}
                       </ul>
-                      <Button asChild className="mt-6 btn-secondary w-full">
-                        <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                          Solicitar Cotización <ArrowRight className="ml-2" size={18} />
-                        </a>
-                      </Button>
+                      <div className="mt-6 space-y-3">
+                        <Button asChild className="btn-secondary w-full">
+                          <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                            Solicitar Cotización <ArrowRight className="ml-2" size={18} />
+                          </a>
+                        </Button>
+                        {product.showPlans && (
+                          <Button asChild variant="outline" className="w-full border-secondary text-secondary hover:bg-secondary/10">
+                            <Link to="/sketchup-planes">
+                              Ver planes
+                            </Link>
+                          </Button>
+                        )}
+                      </div>
                     </CardContent>
                   </Card>
                 </motion.div>
