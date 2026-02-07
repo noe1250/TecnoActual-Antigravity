@@ -75,24 +75,30 @@ const Contacto = () => {
 
   const onSubmit = async (data: ContactFormData) => {
     try {
-      const response = await fetch("https://formspree.io/f/xvovbbrr", {
+      // Use the local PHP script for sending email
+      const response = await fetch("/contact.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json",
         },
         body: JSON.stringify(data),
       });
 
+      // Handle the PHP script response
       if (response.ok) {
-        setIsSubmitted(true);
-        toast({
-          title: "¡Mensaje enviado!",
-          description: "Nos pondremos en contacto contigo pronto.",
-        });
-        form.reset();
+        const result = await response.json();
+        if (result.status === "success") {
+          setIsSubmitted(true);
+          toast({
+            title: "¡Mensaje enviado!",
+            description: "Nos pondremos en contacto contigo pronto.",
+          });
+          form.reset();
+        } else {
+          throw new Error(result.message || "Error al enviar el mensaje");
+        }
       } else {
-        throw new Error("Error al enviar el mensaje");
+        throw new Error("Error del servidor: " + response.statusText);
       }
     } catch (error) {
       toast({
