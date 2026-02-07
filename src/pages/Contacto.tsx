@@ -28,9 +28,7 @@ const softwareOptions = [
   { value: "sketchup", label: "SketchUp Pro/Studio" },
   { value: "solidworks", label: "SolidWorks" },
   { value: "workstations", label: "Workstations (HP/Dell/Lenovo)" },
-  { value: "microsoft365", label: "Microsoft 365" },
   { value: "google-workspace", label: "Google Workspace" },
-  { value: "zoom", label: "Zoom Business" },
   { value: "otro", label: "Otro" },
 ];
 
@@ -81,6 +79,7 @@ const Contacto = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json",
         },
         body: JSON.stringify(data),
       });
