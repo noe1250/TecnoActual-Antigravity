@@ -42,8 +42,8 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    value: "eduardoe@tecnoactual.com",
-    href: "mailto:eduardoe@tecnoactual.com",
+    value: "ventas@tecnoactual.com",
+    href: "mailto:ventas@tecnoactual.com",
   },
   {
     icon: Phone,
@@ -75,14 +75,33 @@ const Contacto = () => {
     },
   });
 
-  const onSubmit = (data: ContactFormData) => {
-    // In production, this would send the data to a backend
-    console.log("Form submitted:", data);
-    setIsSubmitted(true);
-    toast({
-      title: "¡Mensaje enviado!",
-      description: "Nos pondremos en contacto contigo pronto.",
-    });
+  const onSubmit = async (data: ContactFormData) => {
+    try {
+      const response = await fetch("https://formspree.io/f/xvovbbrr", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        toast({
+          title: "¡Mensaje enviado!",
+          description: "Nos pondremos en contacto contigo pronto.",
+        });
+        form.reset();
+      } else {
+        throw new Error("Error al enviar el mensaje");
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo o contáctanos por WhatsApp.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (

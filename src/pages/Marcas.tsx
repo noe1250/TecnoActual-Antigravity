@@ -7,10 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import sketchupImg from "@/assets/products/sketchup.jpg";
 import solidworksImg from "@/assets/products/solidworks.jpg";
 import workstationsImg from "@/assets/products/workstations.jpg";
-import microsoft365Img from "@/assets/products/microsoft365.jpg";
-import googleWorkspaceImg from "@/assets/products/google-workspace.jpg";
 import hardwareAccessoriesImg from "@/assets/products/hardware-accessories.png";
-import zoomImg from "@/assets/products/zoom.jpg";
 
 const WHATSAPP_NUMBER = "528181880009";
 const WHATSAPP_MESSAGE = encodeURIComponent("Hola, me interesa información sobre sus soluciones de software.");
@@ -58,18 +55,6 @@ const products = [
     ],
   },
   {
-    name: "Microsoft 365",
-    description: "Suite completa de productividad para empresas",
-    image: microsoft365Img,
-    features: [
-      "Office (Word, Excel, PowerPoint, Outlook)",
-      "Teams para colaboración",
-      "OneDrive con 1TB de almacenamiento",
-      "Seguridad avanzada incluida",
-      "Actualizaciones automáticas",
-    ],
-  },
-  {
     name: "Hardware y Accesorios",
     description: "Complementos esenciales para tu espacio de trabajo",
     image: hardwareAccessoriesImg,
@@ -79,18 +64,6 @@ const products = [
       "Soluciones de almacenamiento",
       "Accesorios para videoconferencia",
       "Componentes de actualización",
-    ],
-  },
-  {
-    name: "Zoom Business",
-    description: "Videoconferencias profesionales sin límites",
-    image: zoomImg,
-    features: [
-      "Reuniones ilimitadas",
-      "Hasta 300 participantes",
-      "Grabación en la nube",
-      "Transcripción automática",
-      "Salas de trabajo y webinars",
     ],
   },
 ];
