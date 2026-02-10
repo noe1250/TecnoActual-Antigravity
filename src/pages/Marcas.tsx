@@ -25,7 +25,6 @@ const products = [
       "Exportación a DWG, PDF, OBJ y más",
       "Trimble Connect para colaboración",
       "Visualización avanzada con V-Ray (Studio)",
-      "Análisis energético con Sefaira (Studio)",
     ],
   },
   {
