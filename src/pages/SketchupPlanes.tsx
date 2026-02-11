@@ -62,7 +62,6 @@ const plans = [
             "V-Ray para Renderizado fotorrealista",
             "Scan Essentials (Nube de puntos)",
             "Revit Importer (Importación directa)",
-            "Sefaira (Análisis energético)",
         ],
         buttonText: "Solicitar Cotización",
         popular: false,
@@ -81,7 +80,6 @@ const comparisonData = [
     { feature: "V-Ray (Renderizado)", go: false, pro: false, studio: true },
     { feature: "Scan Essentials", go: false, pro: false, studio: true },
     { feature: "Importación de Revit", go: false, pro: false, studio: true },
-    { feature: "Sefaira (Análisis)", go: false, pro: false, studio: true },
 ];
 
 const SketchupPlanes = () => {
@@ -232,12 +230,6 @@ const SketchupPlanes = () => {
                                         <Zap className="text-primary" size={18} />
                                     </div>
                                     <span>Acceso a SketchUp Pro y LayOut</span>
-                                </li>
-                                <li className="flex items-center gap-3">
-                                    <div className="bg-primary/10 p-1.5 rounded-full">
-                                        <Zap className="text-primary" size={18} />
-                                    </div>
-                                    <span>Sefaira para análisis energético</span>
                                 </li>
                                 <li className="flex items-center gap-3">
                                     <div className="bg-primary/10 p-1.5 rounded-full">
