@@ -145,7 +145,7 @@ const Contacto = () => {
             >
               <Card className="shadow-elevated">
                 <CardHeader>
-                  <CardTitle className="text-2xl">Envíanos un mensaje</CardTitle>
+                  <h2 className="text-2xl font-semibold leading-none tracking-tight">Envíanos un mensaje</h2>
                   <CardDescription>
                     Completa el formulario y nos pondremos en contacto contigo.
                   </CardDescription>

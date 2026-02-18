@@ -115,6 +115,9 @@ const SketchupPlanes = () => {
             {/* Pricing Cards */}
             <section className="section overflow-hidden">
                 <div className="container">
+                    <div className="text-center mb-10">
+                        <h2 className="text-2xl md:text-3xl font-bold">Planes de SketchUp</h2>
+                    </div>
                     <div className="grid md:grid-cols-3 gap-8">
                         {plans.map((plan, index) => (
                             <motion.div
@@ -134,7 +137,7 @@ const SketchupPlanes = () => {
                                 <Card className={`feature-card flex flex-col w-full ${plan.popular ? 'border-secondary shadow-elevated' : 'border-border'}`}>
                                     <CardHeader>
                                         <div className="mb-4">{plan.icon}</div>
-                                        <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
+                                        <h3 className="text-2xl font-bold leading-none tracking-tight">{plan.name}</h3>
                                         <CardDescription className="text-primary font-medium">{plan.tagline}</CardDescription>
                                     </CardHeader>
                                     <CardContent className="flex-1">
@@ -260,7 +263,7 @@ const SketchupPlanes = () => {
                                             <Check size={20} className="text-secondary" />
                                         </div>
                                         <div>
-                                            <p className="font-bold">Distribuidor Autorizado</p>
+                                            <h4 className="font-bold mb-1">Distribuidor Autorizado</h4>
                                             <p className="text-sm text-white/70">Garantizamos licencias 100% legales y oficiales vinculadas a tu cuenta de Trimble.</p>
                                         </div>
                                     </div>
@@ -269,7 +272,7 @@ const SketchupPlanes = () => {
                                             <Check size={20} className="text-secondary" />
                                         </div>
                                         <div>
-                                            <p className="font-bold">Asesoría Técnica</p>
+                                            <h4 className="font-bold mb-1">Asesoría Técnica</h4>
                                             <p className="text-sm text-white/70">Te ayudamos a elegir el plan correcto y te apoyamos en el proceso de instalación.</p>
                                         </div>
                                     </div>
@@ -278,7 +281,7 @@ const SketchupPlanes = () => {
                                             <Check size={20} className="text-secondary" />
                                         </div>
                                         <div>
-                                            <p className="font-bold">Facturación Local</p>
+                                            <h4 className="font-bold mb-1">Facturación Local</h4>
                                             <p className="text-sm text-white/70">Emitimos facturas válidas en México para todos nuestros servicios y licitaciones.</p>
                                         </div>
                                     </div>

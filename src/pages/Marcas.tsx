@@ -97,6 +97,9 @@ const Marcas = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
           >
+            <div className="text-center mb-10">
+              <h2 className="text-2xl md:text-3xl font-bold">Catálogo de Software y Hardware</h2>
+            </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {products.map((product, index) => (
                 <motion.div

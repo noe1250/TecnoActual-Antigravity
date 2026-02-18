@@ -233,7 +233,7 @@ const Index = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg mb-1">{item.title}</h3>
-                    <p className="text-background/70">{item.description}</p>
+                    <p className="text-background/70 text-sm">{item.description}</p>
                   </div>
                 </motion.div>
               ))}

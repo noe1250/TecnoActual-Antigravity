@@ -50,6 +50,9 @@ const Blog = () => {
       {/* Blog Posts */}
       <section className="section">
         <div className="container">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold">Artículos Recientes</h2>
+          </div>
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {blogPosts.map((post, index) => (
               <motion.div
@@ -64,8 +67,8 @@ const Blog = () => {
                   <CardHeader>
                     <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
                       <span className={`px-3 py-1 rounded-full text-xs font-medium ${post.color === 'primary'
-                          ? 'bg-primary/10 text-primary'
-                          : 'bg-secondary/10 text-secondary'
+                        ? 'bg-primary/10 text-primary'
+                        : 'bg-secondary/10 text-secondary'
                         }`}>
                         {post.category}
                       </span>

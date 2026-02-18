@@ -263,10 +263,10 @@ const Legal = () => {
                 >
                   <Card className="max-w-4xl mx-auto">
                     <CardHeader>
-                      <CardTitle className="text-2xl md:text-3xl flex items-center gap-3">
+                      <h2 className="text-2xl md:text-3xl font-semibold leading-none tracking-tight flex items-center gap-3">
                         <section.icon className="text-primary" size={28} />
                         {section.name}
-                      </CardTitle>
+                      </h2>
                       <p className="text-muted-foreground">
                         Última actualización: {section.content.lastUpdate}
                       </p>
