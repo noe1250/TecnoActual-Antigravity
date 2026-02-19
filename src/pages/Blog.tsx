@@ -14,6 +14,8 @@ const blogPosts = [
     date: "25 de Octubre, 2025",
     category: "Artículos",
     color: "primary",
+    ctaLink: "/marcas",
+    ctaLabel: "Ver nuestras soluciones por suscripción",
   },
   {
     id: 4,
@@ -22,6 +24,8 @@ const blogPosts = [
     date: "1 de Octubre, 2025",
     category: "Noticias",
     color: "secondary",
+    ctaLink: "/contacto",
+    ctaLabel: "Contáctanos",
   },
 ];
 
@@ -83,9 +87,12 @@ const Blog = () => {
                     <CardDescription className="flex-1 leading-relaxed">
                       {post.excerpt}
                     </CardDescription>
-                    <Button variant="link" className="mt-4 p-0 h-auto text-primary justify-start">
-                      Leer más <ArrowRight className="ml-2" size={16} />
-                    </Button>
+                    <Link
+                      to={post.ctaLink}
+                      className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline underline-offset-4 transition-colors"
+                    >
+                      {post.ctaLabel} <ArrowRight size={15} />
+                    </Link>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -109,9 +116,14 @@ const Blog = () => {
             <p className="text-muted-foreground mb-8">
               Contáctanos para recibir información sobre ofertas especiales y novedades.
             </p>
-            <Button asChild size="lg" className="btn-primary">
-              <Link to="/contacto">Contáctanos</Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg" className="btn-primary">
+                <Link to="/contacto">Contáctanos</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="btn-outline">
+                <Link to="/marcas">Ver todas las soluciones</Link>
+              </Button>
+            </div>
           </motion.div>
         </div>
       </section>

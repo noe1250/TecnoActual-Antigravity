@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, MessageCircle, Send, CheckCircle } from "lucide-react";
 import { useForm } from "react-hook-form";
@@ -127,6 +128,11 @@ const Contacto = () => {
             </h1>
             <p className="text-lg text-muted-foreground">
               Cuéntanos qué necesitas y te ayudaremos a encontrar la solución perfecta.
+              ¿Aún explorando opciones?{" "}
+              <Link to="/marcas" className="text-primary underline underline-offset-4 hover:text-primary/80 font-medium transition-colors">
+                Conoce nuestras soluciones
+              </Link>
+              .
             </p>
           </motion.div>
         </div>
@@ -275,6 +281,13 @@ const Contacto = () => {
                         <Button type="submit" size="lg" className="btn-primary w-full">
                           Enviar Mensaje <Send className="ml-2" size={18} />
                         </Button>
+                        <p className="text-xs text-muted-foreground text-center">
+                          Al enviar este formulario aceptas nuestro{" "}
+                          <Link to="/legal#privacidad" className="underline underline-offset-2 hover:text-foreground transition-colors">
+                            Aviso de Privacidad
+                          </Link>
+                          .
+                        </p>
                       </form>
                     </Form>
                   )}

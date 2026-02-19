@@ -111,6 +111,9 @@ const Index = () => {
                   <p className="text-foreground font-medium">
                     Por eso, en TecnoActual nos hemos especializado en software de última generación por suscripción. Queremos que tu empresa tenga acceso a las mejores herramientas, siempre actualizadas, para mantenerse competitiva en un mercado que no se detiene.
                   </p>
+                  <p>
+                    Descubre <Link to="/marcas" className="text-primary underline underline-offset-4 hover:text-primary/80 transition-colors font-medium">nuestras soluciones de software y hardware</Link> disponibles por suscripción.
+                  </p>
                 </div>
               </div>
             </div>
@@ -176,6 +179,11 @@ const Index = () => {
               </motion.div>
             ))}
           </motion.div>
+          <div className="text-center mt-10">
+            <Link to="/marcas" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline underline-offset-4 transition-colors">
+              Ver todas nuestras soluciones <ArrowRight size={18} />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -238,6 +246,11 @@ const Index = () => {
                 </motion.div>
               ))}
             </motion.div>
+            <div className="text-center mt-10">
+              <Link to="/contacto" className="inline-flex items-center gap-2 text-background font-semibold bg-secondary hover:bg-secondary/90 transition-colors px-6 py-3 rounded-lg">
+                Solicita tu cotización <ArrowRight size={18} />
+              </Link>
+            </div>
           </div>
         </div>
       </section>

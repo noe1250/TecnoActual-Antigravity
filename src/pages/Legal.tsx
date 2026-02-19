@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { FileText, Scale, Heart, RefreshCcw } from "lucide-react";
 import Layout from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -293,6 +293,15 @@ const Legal = () => {
                           )}
                         </div>
                       ))}
+                      <div className="pt-4 border-t border-border">
+                        <p className="text-sm text-muted-foreground">
+                          ¿Tienes preguntas sobre esta sección?{" "}
+                          <Link to="/contacto" className="text-primary underline underline-offset-2 hover:text-primary/80 transition-colors font-medium">
+                            Contáctanos
+                          </Link>
+                          .
+                        </p>
+                      </div>
                     </CardContent>
                   </Card>
                 </motion.div>

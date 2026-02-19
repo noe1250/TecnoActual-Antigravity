@@ -19,6 +19,7 @@ const products = [
     description: "Software líder en diseño 2D y 3D para arquitectura y construcción",
     image: sketchupImg,
     showPlans: true,
+    descriptionLink: { to: "/sketchup-planes", label: "Ver planes de SketchUp" },
     features: [
       "Modelado 3D intuitivo y potente",
       "Extension Warehouse con miles de plugins",
@@ -121,7 +122,20 @@ const Marcas = () => {
 
                     <CardHeader>
                       <CardTitle className="text-xl">{product.name}</CardTitle>
-                      <CardDescription>{product.description}</CardDescription>
+                      <CardDescription>
+                        {product.description}
+                        {product.descriptionLink && (
+                          <>
+                            {" — "}
+                            <Link
+                              to={product.descriptionLink.to}
+                              className="text-primary underline underline-offset-2 hover:text-primary/80 transition-colors text-xs"
+                            >
+                              {product.descriptionLink.label}
+                            </Link>
+                          </>
+                        )}
+                      </CardDescription>
                     </CardHeader>
                     <CardContent className="flex-1 flex flex-col">
                       <ul className="space-y-2 flex-1">
@@ -152,6 +166,32 @@ const Marcas = () => {
               ))}
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Blog + Contact bridge section */}
+      <section className="section">
+        <div className="container">
+          <div className="max-w-4xl mx-auto grid sm:grid-cols-2 gap-6">
+            <div className="bg-muted rounded-xl p-6">
+              <h3 className="font-semibold text-lg mb-2">Software y tendencias</h3>
+              <p className="text-muted-foreground text-sm mb-4">
+                Lee nuestros artículos sobre las ventajas del software por suscripción y novedades del sector.
+              </p>
+              <Link to="/blog" className="text-primary font-medium text-sm inline-flex items-center gap-1 hover:underline underline-offset-4 transition-colors">
+                Ir al Blog <ArrowRight size={15} />
+              </Link>
+            </div>
+            <div className="bg-muted rounded-xl p-6">
+              <h3 className="font-semibold text-lg mb-2">¿Necesitas una cotización?</h3>
+              <p className="text-muted-foreground text-sm mb-4">
+                Cuéntanos sobre tu proyecto y te preparamos una propuesta personalizada sin costo.
+              </p>
+              <Link to="/contacto" className="text-primary font-medium text-sm inline-flex items-center gap-1 hover:underline underline-offset-4 transition-colors">
+                Solicitar cotización <ArrowRight size={15} />
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 

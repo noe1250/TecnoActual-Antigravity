@@ -107,6 +107,11 @@ const SketchupPlanes = () => {
                                     Ver Disponibilidad <ArrowRight className="ml-2" size={18} />
                                 </a>
                             </Button>
+                            <Button asChild size="lg" variant="outline" className="btn-outline">
+                                <Link to="/marcas">
+                                    Ver más productos
+                                </Link>
+                            </Button>
                         </div>
                     </motion.div>
                 </div>
@@ -210,6 +215,13 @@ const SketchupPlanes = () => {
                                 </TableBody>
                             </Table>
                         </div>
+                        <p className="text-center text-sm text-muted-foreground mt-6">
+                            ¿Tienes dudas sobre qué plan elegir?{" "}
+                            <Link to="/contacto" className="text-primary underline underline-offset-2 hover:text-primary/80 transition-colors font-medium">
+                                Contáctanos y te asesoramos sin costo
+                            </Link>
+                            .
+                        </p>
                     </motion.div>
                 </div>
             </section>

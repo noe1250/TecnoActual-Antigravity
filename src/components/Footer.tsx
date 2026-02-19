@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <footer className="bg-foreground text-background py-16">
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand Column */}
           <div className="space-y-4">
             <Link to="/" className="inline-block">
@@ -17,6 +17,40 @@ const Footer = () => {
             <p className="text-muted-foreground text-sm leading-relaxed">
               Más de 20 años ayudando a empresas con soluciones de software por suscripción.
             </p>
+          </div>
+
+          {/* Products */}
+          <div>
+            <h4 className="text-sm font-semibold uppercase tracking-wider mb-4 text-muted-foreground">
+              Productos
+            </h4>
+            <ul className="space-y-3">
+              <li>
+                <Link to="/marcas" className="text-background/80 hover:text-background transition-colors">
+                  SketchUp Pro / Studio
+                </Link>
+              </li>
+              <li>
+                <Link to="/marcas" className="text-background/80 hover:text-background transition-colors">
+                  SolidWorks
+                </Link>
+              </li>
+              <li>
+                <Link to="/marcas" className="text-background/80 hover:text-background transition-colors">
+                  Workstations
+                </Link>
+              </li>
+              <li>
+                <Link to="/sketchup-planes" className="text-background/80 hover:text-background transition-colors">
+                  Planes de SketchUp
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" className="text-background/80 hover:text-background transition-colors">
+                  Blog y Noticias
+                </Link>
+              </li>
+            </ul>
           </div>
 
           {/* Navigation */}
