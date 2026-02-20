@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Check, X, ArrowRight, MessageCircle, Laptop, Globe, Layers, Zap } from "lucide-react";
+import { Check, X, ArrowRight, MessageCircle, Laptop, Globe, Layers, Zap, Star, ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
@@ -22,50 +22,59 @@ const plans = [
     {
         name: "SketchUp Go",
         tagline: "Diseña en cualquier lugar",
-        description: "Ideal para modelado rápido y revisión de proyectos en la web o iPad.",
-        price: "Suscripción Anual",
+        description: "Ideal para modelado rápido y revisión de proyectos en web o iPad.",
+        price: "$119 USD*",
+        period: "/ año",
         features: [
             "Modelado en la web (SketchUp for Web)",
             "Modelado en iPad (SketchUp for iPad)",
             "Almacenamiento ilimitado en Trimble Connect",
-            "Visualización en dispositivos móviles",
-            "Soporte estándar",
+            "Visores para iOS y Android",
         ],
-        buttonText: "Solicitar Cotización",
+        buttonText: "Cotizar Go",
         popular: false,
-        icon: <Globe className="text-primary" size={32} />,
+        icon: <Globe className="text-blue-500" size={32} />,
+        color: "border-blue-200",
+        bg: "bg-blue-50/50"
     },
     {
         name: "SketchUp Pro",
         tagline: "El estándar de la industria",
         description: "La solución completa para profesionales que necesitan potencia y flexibilidad.",
-        price: "Suscripción Anual",
+        price: "$299 USD*",
+        period: "/ año",
         features: [
-            "Todo lo incluido en SketchUp Go",
+            "Todo lo de Go, más:",
             "SketchUp for Desktop (Windows/Mac)",
-            "LayOut (Documentación 2D y planos)",
-            "Extension Warehouse (Miles de plugins)",
-            "Style Builder (Estilos personalizados)",
-            "Visualización en Realidad Aumentada",
+            "LayOut (Documentación 2D)",
+            "Extension Warehouse (Plugins)",
+            "Style Builder",
+            "Soporte Premium",
         ],
-        buttonText: "Solicitar Cotización",
+        buttonText: "Cotizar Pro",
         popular: true,
         icon: <Laptop className="text-secondary" size={32} />,
+        color: "border-secondary",
+        bg: "bg-background"
     },
     {
         name: "SketchUp Studio",
         tagline: "Flujos de trabajo avanzados",
-        description: "Para equipos que requieren visualizaciones de alto nivel y análisis de datos.",
-        price: "Suscripción Anual",
+        description: "Para equipos que requieren visualizaciones fotorrealistas y análisis.",
+        price: "$699 USD*",
+        period: "/ año",
         features: [
-            "Todo lo incluido en SketchUp Pro",
-            "V-Ray para Renderizado fotorrealista",
+            "Todo lo de Pro, más:",
+            "V-Ray (Renderizado)",
             "Scan Essentials (Nube de puntos)",
-            "Revit Importer (Importación directa)",
+            "Revit Importer",
+            "Análisis energético avanzado",
         ],
-        buttonText: "Solicitar Cotización",
+        buttonText: "Cotizar Studio",
         popular: false,
-        icon: <Layers className="text-primary" size={32} />,
+        icon: <Layers className="text-indigo-500" size={32} />,
+        color: "border-indigo-200",
+        bg: "bg-indigo-50/50"
     },
 ];
 
@@ -86,30 +95,36 @@ const SketchupPlanes = () => {
     return (
         <Layout>
             {/* Hero Section */}
-            <section className="bg-gradient-to-br from-primary/10 via-background to-secondary/10 py-16 md:py-24">
-                <div className="container">
+            <section className="relative bg-gradient-to-br from-primary/5 via-background to-secondary/10 py-20 overflow-hidden">
+                <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent skew-x-12 opacity-50" />
+                <div className="container relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                         className="max-w-4xl mx-auto text-center"
                     >
-                        <Badge className="mb-4 btn-outline pointer-events-none">SketchUp 2026</Badge>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6">
-                            Elige el <span className="text-gradient-brand">Plan de SketchUp</span> ideal para ti
+                        {/* Authorized Reseller Badge (Placeholder Style) */}
+                        <div className="inline-flex items-center gap-2 bg-white border border-gray-200 rounded-full px-4 py-1.5 shadow-sm mb-8 mx-auto">
+                            <ShieldCheck size={18} className="text-blue-600" />
+                            <span className="text-sm font-bold text-gray-700 tracking-wide uppercase">SketchUp Authorized Reseller</span>
+                        </div>
+
+                        <h1 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
+                            Elige el <span className="text-secondary">Plan Perfecto</span> <br /> para tu Creatividad
                         </h1>
-                        <p className="text-lg md:text-xl text-muted-foreground mb-8">
-                            Desde el modelado rápido en iPad hasta flujos de trabajo profesionales con renderizado fotorrealista. Tenemos la licencia oficial que tu proyecto necesita.
+                        <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
+                            Desde el modelado conceptual hasta la construcción real. Somos tu socio local certificado para licencias originales y soporte técnico.
                         </p>
                         <div className="flex flex-wrap justify-center gap-4">
-                            <Button asChild size="lg" className="btn-primary">
+                            <Button asChild size="lg" className="btn-primary shadow-lg hover:shadow-xl transition-all">
                                 <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                                    Ver Disponibilidad <ArrowRight className="ml-2" size={18} />
+                                    Hablar con un Experto <MessageCircle className="ml-2" size={18} />
                                 </a>
                             </Button>
-                            <Button asChild size="lg" variant="outline" className="btn-outline">
+                            <Button asChild size="lg" variant="outline" className="btn-outline bg-white/50 backdrop-blur-sm">
                                 <Link to="/marcas">
-                                    Ver más productos
+                                    Ver Catálogo Completo
                                 </Link>
                             </Button>
                         </div>
@@ -118,12 +133,14 @@ const SketchupPlanes = () => {
             </section>
 
             {/* Pricing Cards */}
-            <section className="section overflow-hidden">
+            <section className="py-20 bg-muted/20">
                 <div className="container">
-                    <div className="text-center mb-10">
-                        <h2 className="text-2xl md:text-3xl font-bold">Planes de SketchUp</h2>
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Planes diseñados para ti</h2>
+                        <p className="text-muted-foreground">Precios transparentes y facturación local en México.</p>
                     </div>
-                    <div className="grid md:grid-cols-3 gap-8">
+
+                    <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
                         {plans.map((plan, index) => (
                             <motion.div
                                 key={plan.name}
@@ -133,36 +150,48 @@ const SketchupPlanes = () => {
                                 className="relative flex"
                             >
                                 {plan.popular && (
-                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-                                        <Badge className="bg-secondary text-secondary-foreground px-4 py-1 text-sm font-bold shadow-lg">
+                                    <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-20">
+                                        <Badge className="bg-gradient-brand text-white px-4 py-1.5 text-sm font-bold shadow-lg border-0 tracking-wide">
                                             MÁS POPULAR
                                         </Badge>
                                     </div>
                                 )}
-                                <Card className={`feature-card flex flex-col w-full ${plan.popular ? 'border-secondary shadow-elevated' : 'border-border'}`}>
-                                    <CardHeader>
-                                        <div className="mb-4">{plan.icon}</div>
-                                        <h3 className="text-2xl font-bold leading-none tracking-tight">{plan.name}</h3>
-                                        <CardDescription className="text-primary font-medium">{plan.tagline}</CardDescription>
+                                <Card className={`flex flex-col w-full overflow-hidden transition-all duration-300 hover:shadow-xl ${plan.popular ? 'border-2 border-secondary shadow-elevated scale-105 z-10' : `border border-border hover:-translate-y-1 ${plan.color}`} ${plan.bg}`}>
+                                    <CardHeader className="pb-4">
+                                        <div className="flex justify-between items-start mb-4">
+                                            <div className="p-3 bg-white rounded-xl shadow-sm border border-gray-100">
+                                                {plan.icon}
+                                            </div>
+                                            {plan.popular && <Star className="text-secondary fill-secondary/20" size={24} />}
+                                        </div>
+                                        <h3 className="text-2xl font-bold">{plan.name}</h3>
+                                        <CardDescription className="text-foreground/80 font-medium mt-2">{plan.tagline}</CardDescription>
                                     </CardHeader>
                                     <CardContent className="flex-1">
-                                        <p className="text-muted-foreground mb-6 text-sm">{plan.description}</p>
+                                        <div className="mb-6 pb-6 border-b border-gray-200/50">
+                                            <div className="flex items-baseline gap-1">
+                                                <span className="text-3xl font-extrabold text-foreground">{plan.price}</span>
+                                                <span className="text-muted-foreground text-sm font-medium">{plan.period}</span>
+                                            </div>
+                                            <p className="text-xs text-muted-foreground mt-2">*Precios estimados, sujetos a cambio.</p>
+                                        </div>
+
                                         <div className="space-y-4">
-                                            <p className="font-bold text-sm text-foreground uppercase tracking-wider">¿Qué incluye?</p>
+                                            <p className="font-bold text-xs uppercase tracking-wider text-muted-foreground">Características principales</p>
                                             <ul className="space-y-3">
                                                 {plan.features.map((feature, i) => (
-                                                    <li key={i} className="flex items-start gap-3">
-                                                        <Check className="text-secondary mt-1 flex-shrink-0" size={16} />
-                                                        <span className="text-muted-foreground text-sm">{feature}</span>
+                                                    <li key={i} className="flex items-start gap-3 text-sm">
+                                                        <Check className={`mt-0.5 flex-shrink-0 ${plan.popular ? 'text-secondary' : 'text-primary'}`} size={16} />
+                                                        <span className="text-foreground/90">{feature}</span>
                                                     </li>
                                                 ))}
                                             </ul>
                                         </div>
                                     </CardContent>
-                                    <CardFooter className="pt-6">
-                                        <Button asChild className={`w-full ${plan.popular ? 'btn-secondary' : 'btn-primary'}`}>
+                                    <CardFooter className="pt-4 pb-8">
+                                        <Button asChild className={`w-full font-bold shadow-md transition-all ${plan.popular ? 'btn-secondary text-lg py-6' : 'btn-primary'}`}>
                                             <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                                                {plan.buttonText}
+                                                {plan.buttonText} <ArrowRight className="ml-2" size={18} />
                                             </a>
                                         </Button>
                                     </CardFooter>
@@ -174,7 +203,7 @@ const SketchupPlanes = () => {
             </section>
 
             {/* Comparison Table */}
-            <section className="section bg-muted/30">
+            <section className="py-20">
                 <div className="container">
                     <motion.div
                         initial={{ opacity: 0 }}
@@ -183,39 +212,39 @@ const SketchupPlanes = () => {
                         className="max-w-4xl mx-auto"
                     >
                         <div className="text-center mb-12">
-                            <h2 className="text-3xl font-bold mb-4">Compara las características</h2>
-                            <p className="text-muted-foreground">Analiza a detalle cuál es la versión de SketchUp que mejor se adapta a tus necesidades profesionales.</p>
+                            <h2 className="text-3xl font-bold mb-4">Comparativa detallada</h2>
+                            <p className="text-muted-foreground">Analiza a detalle las capacidades de cada versión.</p>
                         </div>
 
                         <div className="bg-card rounded-xl border border-border shadow-soft overflow-hidden">
                             <Table>
                                 <TableHeader>
-                                    <TableRow className="hover:bg-transparent">
-                                        <TableHead className="w-[40%] font-bold text-foreground">Funcionalidades</TableHead>
+                                    <TableRow className="hover:bg-transparent bg-muted/50">
+                                        <TableHead className="w-[40%] font-bold text-foreground py-4 pl-6">Funcionalidades</TableHead>
                                         <TableHead className="text-center font-bold text-foreground">Go</TableHead>
-                                        <TableHead className="text-center font-bold text-foreground">Pro</TableHead>
+                                        <TableHead className="text-center font-bold text-secondary text-lg">Pro</TableHead>
                                         <TableHead className="text-center font-bold text-foreground">Studio</TableHead>
                                     </TableRow>
                                 </TableHeader>
                                 <TableBody>
                                     {comparisonData.map((item, index) => (
-                                        <TableRow key={index} className="hover:bg-muted/50">
-                                            <TableCell className="font-medium">{item.feature}</TableCell>
+                                        <TableRow key={index} className="hover:bg-muted/50 transition-colors">
+                                            <TableCell className="font-medium pl-6 py-4">{item.feature}</TableCell>
                                             <TableCell className="text-center">
-                                                {item.go ? <Check className="mx-auto text-secondary" size={20} /> : <X className="mx-auto text-muted/30" size={20} />}
+                                                {item.go ? <Check className="mx-auto text-primary" size={20} /> : <X className="mx-auto text-muted/20" size={20} />}
+                                            </TableCell>
+                                            <TableCell className="text-center bg-secondary/5 border-x border-secondary/10">
+                                                {item.pro ? <Check className="mx-auto text-secondary" size={22} strokeWidth={3} /> : <X className="mx-auto text-muted/20" size={20} />}
                                             </TableCell>
                                             <TableCell className="text-center">
-                                                {item.pro ? <Check className="mx-auto text-secondary" size={20} /> : <X className="mx-auto text-muted/30" size={20} />}
-                                            </TableCell>
-                                            <TableCell className="text-center">
-                                                {item.studio ? <Check className="mx-auto text-secondary" size={20} /> : <X className="mx-auto text-muted/30" size={20} />}
+                                                {item.studio ? <Check className="mx-auto text-primary" size={20} /> : <X className="mx-auto text-muted/20" size={20} />}
                                             </TableCell>
                                         </TableRow>
                                     ))}
                                 </TableBody>
                             </Table>
                         </div>
-                        <p className="text-center text-sm text-muted-foreground mt-6">
+                        <p className="text-center text-sm text-muted-foreground mt-8 bg-muted/30 py-3 rounded-lg border border-border/50">
                             ¿Tienes dudas sobre qué plan elegir?{" "}
                             <Link to="/contacto" className="text-primary underline underline-offset-2 hover:text-primary/80 transition-colors font-medium">
                                 Contáctanos y te asesoramos sin costo
@@ -227,7 +256,7 @@ const SketchupPlanes = () => {
             </section>
 
             {/* Education & Why TecnoActual */}
-            <section className="section">
+            <section className="py-20 bg-muted/30">
                 <div className="container">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <motion.div
@@ -235,25 +264,28 @@ const SketchupPlanes = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                         >
-                            <h2 className="text-3xl font-bold mb-6">SketchUp para <span className="text-secondary">Estudiantes y Educadores</span></h2>
-                            <p className="text-muted-foreground mb-6">
-                                Impulsa tu aprendizaje con las mismas herramientas que utilizan los profesionales. La suscripción EDU ofrece todas las capacidades de SketchUp Studio a un precio especial para el sector académico.
+                            <div className="inline-block px-3 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-bold uppercase tracking-wide mb-4">
+                                Sector Académico
+                            </div>
+                            <h2 className="text-3xl font-bold mb-6">SketchUp para <span className="text-gradient-brand">Estudiantes y Educadores</span></h2>
+                            <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
+                                Impulsa tu aprendizaje con las mismas herramientas que utilizan los profesionales. La suscripción EDU ofrece todas las capacidades de SketchUp Studio a un precio especial.
                             </p>
                             <ul className="space-y-4 mb-8">
                                 <li className="flex items-center gap-3">
-                                    <div className="bg-primary/10 p-1.5 rounded-full">
-                                        <Zap className="text-primary" size={18} />
+                                    <div className="bg-white p-2 rounded-full shadow-sm">
+                                        <Zap className="text-secondary" size={20} />
                                     </div>
-                                    <span>Acceso a SketchUp Pro y LayOut</span>
+                                    <span className="font-medium">Acceso total a SketchUp Pro y LayOut</span>
                                 </li>
                                 <li className="flex items-center gap-3">
-                                    <div className="bg-primary/10 p-1.5 rounded-full">
-                                        <Zap className="text-primary" size={18} />
+                                    <div className="bg-white p-2 rounded-full shadow-sm">
+                                        <Zap className="text-secondary" size={20} />
                                     </div>
-                                    <span>V-Ray para renderizado educativo</span>
+                                    <span className="font-medium">V-Ray para renderizado educativo</span>
                                 </li>
                             </ul>
-                            <Button asChild variant="outline" className="btn-outline border-secondary text-secondary hover:bg-secondary/5">
+                            <Button asChild variant="outline" size="lg" className="btn-outline border-secondary text-secondary hover:bg-secondary hover:text-white transition-all">
                                 <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
                                     Solicitar Precio Académico
                                 </a>
@@ -264,37 +296,40 @@ const SketchupPlanes = () => {
                             initial={{ opacity: 0, x: 30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="bg-gradient-dark p-8 md:p-12 rounded-2xl text-white relative overflow-hidden"
+                            className="bg-gradient-to-br from-[#1B3A57] to-[#0F1E2E] p-8 md:p-12 rounded-3xl text-white relative overflow-hidden shadow-2xl"
                         >
-                            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-primary/20 rounded-full blur-3xl" />
+                            <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-secondary/20 rounded-full blur-3xl" />
                             <div className="relative z-10">
-                                <h3 className="text-2xl font-bold mb-6">¿Por qué adquirir con TecnoActual?</h3>
-                                <div className="space-y-6">
-                                    <div className="flex gap-4">
-                                        <div className="mt-1 bg-white/10 p-2 rounded-lg">
+                                <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
+                                    <ShieldCheck className="text-secondary" size={32} />
+                                    ¿Por qué elegir TecnoActual?
+                                </h3>
+                                <div className="space-y-8">
+                                    <div className="flex gap-4 group">
+                                        <div className="mt-1 bg-white/10 p-2 rounded-xl group-hover:bg-secondary/20 transition-colors">
                                             <Check size={20} className="text-secondary" />
                                         </div>
                                         <div>
-                                            <h4 className="font-bold mb-1">Distribuidor Autorizado</h4>
-                                            <p className="text-sm text-white/70">Garantizamos licencias 100% legales y oficiales vinculadas a tu cuenta de Trimble.</p>
+                                            <h4 className="font-bold mb-1 text-lg">Distribuidor Autorizado</h4>
+                                            <p className="text-sm text-white/70 leading-relaxed">Garantía de licencias 100% legales, oficiales y vinculadas directamente a tu cuenta de Trimble.</p>
                                         </div>
                                     </div>
-                                    <div className="flex gap-4">
-                                        <div className="mt-1 bg-white/10 p-2 rounded-lg">
+                                    <div className="flex gap-4 group">
+                                        <div className="mt-1 bg-white/10 p-2 rounded-xl group-hover:bg-secondary/20 transition-colors">
                                             <Check size={20} className="text-secondary" />
                                         </div>
                                         <div>
-                                            <h4 className="font-bold mb-1">Asesoría Técnica</h4>
-                                            <p className="text-sm text-white/70">Te ayudamos a elegir el plan correcto y te apoyamos en el proceso de instalación.</p>
+                                            <h4 className="font-bold mb-1 text-lg">Asesoría Técnica Local</h4>
+                                            <p className="text-sm text-white/70 leading-relaxed">Hablamos tu idioma. Te ayudamos a instalar, configurar y resolver cualquier duda técnica.</p>
                                         </div>
                                     </div>
-                                    <div className="flex gap-4">
-                                        <div className="mt-1 bg-white/10 p-2 rounded-lg">
+                                    <div className="flex gap-4 group">
+                                        <div className="mt-1 bg-white/10 p-2 rounded-xl group-hover:bg-secondary/20 transition-colors">
                                             <Check size={20} className="text-secondary" />
                                         </div>
                                         <div>
-                                            <h4 className="font-bold mb-1">Facturación Local</h4>
-                                            <p className="text-sm text-white/70">Emitimos facturas válidas en México para todos nuestros servicios y licitaciones.</p>
+                                            <h4 className="font-bold mb-1 text-lg">Facturación Mexicana</h4>
+                                            <p className="text-sm text-white/70 leading-relaxed">Comprobantes fiscales válidos en México (CFDI) para todos nuestros servicios.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -305,28 +340,25 @@ const SketchupPlanes = () => {
             </section>
 
             {/* CTA Final */}
-            <section className="py-16 bg-muted">
+            <section className="py-24 bg-white">
                 <div className="container">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="text-center max-w-2xl mx-auto"
+                        className="text-center max-w-3xl mx-auto"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            ¿Listo para transformar tus ideas en realidad?
+                        <h2 className="text-4xl font-bold mb-6 tracking-tight">
+                            ¿Listo para crear sin límites?
                         </h2>
-                        <p className="text-muted-foreground mb-8">
-                            No esperes más. Obtén hoy mismo tu suscripción de SketchUp y comienza a diseñar con el software más intuitivo del mercado.
+                        <p className="text-xl text-muted-foreground mb-10">
+                            Únete a millones de profesionales que diseñan con SketchUp.
                         </p>
                         <div className="flex flex-col sm:flex-row justify-center gap-4">
-                            <Button asChild size="lg" className="btn-secondary">
+                            <Button asChild size="lg" className="btn-primary text-lg px-8 py-6 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all">
                                 <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                                    Contactar Asesor <MessageCircle className="ml-2" size={20} />
+                                    Empezar Ahora <ArrowRight className="ml-2" size={20} />
                                 </a>
-                            </Button>
-                            <Button asChild variant="outline" size="lg" className="btn-outline">
-                                <Link to="/contacto">Ir a Contacto</Link>
                             </Button>
                         </div>
                     </motion.div>
