@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/accordion";
 import logoHeader from "@/assets/logo-header.png";
 import sketchupReseller from "@/assets/sketchup-reseller-official.png";
+import heroBg from "@/assets/hero-bg.jpg";
 import Footer from "@/components/Footer";
 
 const WHATSAPP_NUMBER = "528181880009";
