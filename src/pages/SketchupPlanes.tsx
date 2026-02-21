@@ -1,370 +1,430 @@
 import { motion } from "framer-motion";
-import { Check, X, ArrowRight, MessageCircle, Laptop, Globe, Layers, Zap, Star, ShieldCheck } from "lucide-react";
+import { Check, ArrowRight, MessageCircle, ShieldCheck, Phone, Globe, Zap, Heart, Star, Clock, Laptop, Layers, Users, HelpCircle, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
-import Layout from "@/components/Layout";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/components/ui/table";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion";
+import logoHeader from "@/assets/logo-header.png";
+import sketchupLogo from "@/assets/products/sketchup.jpg";
 
 const WHATSAPP_NUMBER = "528181880009";
 const WHATSAPP_MESSAGE = encodeURIComponent("Hola, me interesa información sobre los planes de SketchUp.");
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 
-const plans = [
-    {
-        name: "SketchUp Go",
-        tagline: "Diseña en cualquier lugar",
-        description: "Ideal para modelado rápido y revisión de proyectos en web o iPad.",
-        price: "$119 USD*",
-        period: "/ año",
-        features: [
-            "Modelado en la web (SketchUp for Web)",
-            "Modelado en iPad (SketchUp for iPad)",
-            "Almacenamiento ilimitado en Trimble Connect",
-            "Visores para iOS y Android",
-        ],
-        buttonText: "Cotizar Go",
-        popular: false,
-        icon: <Globe className="text-blue-500" size={32} />,
-        color: "border-blue-200",
-        bg: "bg-blue-50/50"
-    },
-    {
-        name: "SketchUp Pro",
-        tagline: "El estándar de la industria",
-        description: "La solución completa para profesionales que necesitan potencia y flexibilidad.",
-        price: "$299 USD*",
-        period: "/ año",
-        features: [
-            "Todo lo de Go, más:",
-            "SketchUp for Desktop (Windows/Mac)",
-            "LayOut (Documentación 2D)",
-            "Extension Warehouse (Plugins)",
-            "Style Builder",
-            "Soporte Premium",
-        ],
-        buttonText: "Cotizar Pro",
-        popular: true,
-        icon: <Laptop className="text-secondary" size={32} />,
-        color: "border-secondary",
-        bg: "bg-background"
-    },
-    {
-        name: "SketchUp Studio",
-        tagline: "Flujos de trabajo avanzados",
-        description: "Para equipos que requieren visualizaciones fotorrealistas y análisis.",
-        price: "$699 USD*",
-        period: "/ año",
-        features: [
-            "Todo lo de Pro, más:",
-            "V-Ray (Renderizado)",
-            "Scan Essentials (Nube de puntos)",
-            "Revit Importer",
-            "Análisis energético avanzado",
-        ],
-        buttonText: "Cotizar Studio",
-        popular: false,
-        icon: <Layers className="text-indigo-500" size={32} />,
-        color: "border-indigo-200",
-        bg: "bg-indigo-50/50"
-    },
-];
+const Header = () => (
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 py-3">
+        <div className="container mx-auto flex items-center justify-between">
+            <Link to="/">
+                <img src={logoHeader} alt="TecnoActual" className="h-8 md:h-10 w-auto" />
+            </Link>
+            <div className="flex items-center gap-4 md:gap-8">
+                <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-gray-50 rounded-full border border-gray-100 shadow-sm">
+                    <img src={sketchupLogo} alt="SketchUp" className="h-5 w-auto rounded" />
+                    <span className="text-[10px] md:text-xs font-bold text-slate-700 tracking-tight">AUTHORIZED RESELLER</span>
+                </div>
+                <Button asChild size="sm" className="bg-[#F2A900] hover:bg-[#D99800] text-white font-bold rounded-full text-xs md:text-sm px-4 md:px-6 shadow-sm">
+                    <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                        <MessageCircle className="mr-2" size={16} /> Contáctanos por WhatsApp
+                    </a>
+                </Button>
+            </div>
+        </div>
+    </header>
+);
 
-const comparisonData = [
-    { feature: "SketchUp para Web", go: true, pro: true, studio: true },
-    { feature: "SketchUp para iPad", go: true, pro: true, studio: true },
-    { feature: "Trimble Connect (Nube)", go: true, pro: true, studio: true },
-    { feature: "Modelado Desktop (Win/Mac)", go: false, pro: true, studio: true },
-    { feature: "LayOut (Documentación 2D)", go: false, pro: true, studio: true },
-    { feature: "Plugins y Extensiones", go: false, pro: true, studio: true },
-    { feature: "Style Builder", go: false, pro: true, studio: true },
-    { feature: "V-Ray (Renderizado)", go: false, pro: false, studio: true },
-    { feature: "Scan Essentials", go: false, pro: false, studio: true },
-    { feature: "Importación de Revit", go: false, pro: false, studio: true },
-];
+const Hero = () => (
+    <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 bg-[#0A192F] overflow-hidden">
+        {/* Abstract Background Elements */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
+            <div className="absolute top-[-10%] right-[-5%] w-[400px] h-[400px] bg-blue-500 rounded-full blur-[120px]" />
+            <div className="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-[#F2A900] rounded-full blur-[150px] opacity-30" />
+        </div>
+
+        <div className="container relative z-10 text-center">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="inline-block px-4 py-1.5 bg-blue-600/20 border border-blue-400/30 rounded-full mb-8"
+            >
+                <span className="text-blue-200 text-xs md:text-sm font-bold tracking-wider uppercase">CONOCE TODO SOBRE SKETCHUP EN MÉXICO</span>
+            </motion.div>
+
+            <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-[1.1]"
+            >
+                SketchUp en México <br />
+                con <span className="text-[#F2A900]">acompañamiento</span> <br />
+                real desde el día uno
+            </motion.h1>
+
+            <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-medium"
+            >
+                Licencias originales Trimble desde una factura mexicana, soporte en español, activación inmediata y un asesor que te conoce por tu nombre.
+            </motion.p>
+
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+            >
+                <Button asChild size="lg" className="bg-[#F2A900] hover:bg-[#D99800] text-black font-black px-8 py-7 rounded-full text-lg shadow-xl shadow-[#f2a90022]">
+                    <a href="#precios">Ver precios en MXN <ArrowRight className="ml-2" size={20} /></a>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="border-2 border-white/20 hover:bg-white/10 text-white font-black px-8 py-7 rounded-full text-lg">
+                    <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">Hablar con un asesor</a>
+                </Button>
+            </motion.div>
+
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.5 }}
+                className="flex flex-wrap items-center justify-center gap-8 md:gap-12"
+            >
+                <div className="flex items-center gap-2 text-blue-200/80 font-bold text-xs md:text-sm">
+                    <Check className="text-[#F2A900]" size={16} /> Pago referenciado
+                </div>
+                <div className="flex items-center gap-2 text-blue-200/80 font-bold text-xs md:text-sm">
+                    <Check className="text-[#F2A900]" size={16} /> Factura deducible
+                </div>
+                <div className="flex items-center gap-2 text-blue-200/80 font-bold text-xs md:text-sm">
+                    <Check className="text-[#F2A900]" size={16} /> Soporte en español
+                </div>
+                <div className="flex items-center gap-2 text-blue-200/80 font-bold text-xs md:text-sm">
+                    <Check className="text-[#F2A900]" size={16} /> Activación en minutos
+                </div>
+            </motion.div>
+        </div>
+    </section>
+);
+
+const TrimbleSection = () => (
+    <section className="py-24 bg-white">
+        <div className="container">
+            <div className="max-w-4xl mb-16 px-4">
+                <span className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4 block">COMPROMISO CON MÉXICO</span>
+                <h2 className="text-4xl md:text-5xl font-black text-[#0A192F] mb-6 leading-tight">
+                    Licencia oficial Trimble, <br />
+                    <span className="text-blue-600">con el servicio local que tu proyecto merece</span>
+                </h2>
+                <p className="text-lg text-slate-600 font-medium leading-relaxed max-w-3xl">
+                    Libera tu creatividad con herramientas de modelado líderes en la industria para el éxito de tus diseños.
+                    Contamos con el servicio que va mucho más allá de la venta, con soporte técnico, capacitación y acompañamiento personalizado.
+                </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 px-4">
+                <Card className="bg-[#F0F7FF] border-none rounded-[40px] p-8 md:p-12 shadow-sm relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-blue-100 rounded-bl-full opacity-50 transition-transform group-hover:scale-110" />
+                    <CardContent className="p-0 relative z-10">
+                        <div className="bg-white w-12 h-12 rounded-2xl flex items-center justify-center mb-8 shadow-sm">
+                            <Layers className="text-blue-600" size={24} />
+                        </div>
+                        <h3 className="text-2xl font-black text-[#0A192F] mb-6">Para tu empresa o despacho</h3>
+                        <ul className="space-y-4">
+                            {[
+                                "Licencia 100% legal Trimble México",
+                                "Factura CFDI 4.0 deducible de impuestos",
+                                "Precios especiales por volumen",
+                                "Soporte técnico preferencial",
+                                "Activación en tu cuenta Trimble actual"
+                            ].map((item, i) => (
+                                <li key={i} className="flex items-start gap-3 font-bold text-slate-700">
+                                    <Check className="text-blue-600 mt-1" size={18} />
+                                    <span>{item}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </CardContent>
+                </Card>
+
+                <Card className="bg-[#F0FFF4] border-none rounded-[40px] p-8 md:p-12 shadow-sm relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-green-100 rounded-bl-full opacity-50 transition-transform group-hover:scale-110" />
+                    <CardContent className="p-0 relative z-10">
+                        <div className="bg-white w-12 h-12 rounded-2xl flex items-center justify-center mb-8 shadow-sm">
+                            <Star className="text-green-600" size={24} />
+                        </div>
+                        <h3 className="text-2xl font-black text-[#0A192F] mb-6">Para tu éxito profesional</h3>
+                        <ul className="space-y-4">
+                            {[
+                                "Asesoría para elegir el mejor plan",
+                                "Activación express el mismo día",
+                                "Descuentos en cursos de capacitación",
+                                "Un asesor personal para tus dudas",
+                                "Renovaciones sencillas y oportunas"
+                            ].map((item, i) => (
+                                <li key={i} className="flex items-start gap-3 font-bold text-slate-700">
+                                    <Check className="text-green-600 mt-1" size={18} />
+                                    <span>{item}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </CardContent>
+                </Card>
+            </div>
+        </div>
+    </section>
+);
+
+const PricingSection = () => {
+    const plans = [
+        {
+            name: "Go",
+            price: "2,569",
+            oldPrice: "2,850",
+            features: [
+                "Para modelado en iPad y Web",
+                "Almacenamiento en la nube limitado",
+                "Trimble Connect Básico",
+                "10 Visores en móviles",
+                "Sincronización en tiempo real"
+            ],
+            color: "text-slate-900"
+        },
+        {
+            name: "Pro",
+            price: "7,048",
+            oldPrice: "7,830",
+            popular: true,
+            features: [
+                "Todo lo de Go más:",
+                "SketchUp for desktop completo",
+                "LayOut para documentación 2D",
+                "Style Builder personalizado",
+                "Plugins y extensiones",
+                "Instalación en 2 equipos"
+            ],
+            color: "text-[#F2A900]"
+        },
+        {
+            name: "Studio",
+            price: "16,326",
+            oldPrice: "18,140",
+            features: [
+                "Todo lo de Pro más:",
+                "Renderizado con V-Ray",
+                "Scan Essentials para nubes de puntos",
+                "Revit Importer directo",
+                "Análisis de eficiencia energética",
+                "Soporte Premium 24/7"
+            ],
+            color: "text-slate-900"
+        }
+    ];
+
+    return (
+        <section id="precios" className="py-24 bg-gray-50">
+            <div className="container text-center">
+                <span className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4 block">PLANES Y PRECIOS</span>
+                <h2 className="text-4xl md:text-5xl font-black text-[#0A192F] mb-6">Elige tu versión de SketchUp</h2>
+                <p className="text-slate-600 font-medium mb-16">Invierte en la herramienta que impulsa tu carrera profesional.</p>
+
+                <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto px-4">
+                    {plans.map((plan, i) => (
+                        <motion.div
+                            key={i}
+                            whileHover={{ y: -10 }}
+                            className="relative"
+                        >
+                            {plan.popular && (
+                                <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
+                                    <div className="bg-[#F2A900] text-black text-[10px] font-black px-4 py-1.5 rounded-full shadow-lg border-2 border-white uppercase tracking-tighter">
+                                        EL MÁS ELEGIDO
+                                    </div>
+                                </div>
+                            )}
+                            <Card className={`rounded-[40px] overflow-hidden border-2 h-full transition-all duration-300 ${plan.popular ? 'border-[#F2A900] shadow-2xl' : 'border-gray-100 shadow-sm hover:shadow-xl'}`}>
+                                <CardContent className="p-10 text-left h-full flex flex-col">
+                                    <span className="text-lg font-black text-slate-400 mb-2 uppercase tracking-tight">{plan.name}</span>
+                                    <div className="flex items-baseline gap-2 mb-2">
+                                        <span className="text-slate-900 text-[10px] font-bold">$</span>
+                                        <span className={`text-4xl md:text-5xl font-black ${plan.color}`}>{plan.price}</span>
+                                    </div>
+                                    <span className="text-slate-500 font-bold text-xs mb-8 block uppercase tracking-tighter">MXN + IVA (Suscripción anual)</span>
+
+                                    <div className="space-y-5 mb-10 flex-1">
+                                        {plan.features.map((feature, j) => (
+                                            <div key={j} className="flex items-start gap-3">
+                                                <div className={`mt-1 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center ${plan.popular ? 'bg-[#F2A900]/20' : 'bg-slate-100'}`}>
+                                                    <Check className={`${plan.popular ? 'text-[#F2A900]' : 'text-slate-400'}`} size={12} strokeWidth={4} />
+                                                </div>
+                                                <span className="text-sm font-bold text-slate-700 leading-tight">{feature}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <Button asChild className={`w-full py-7 rounded-full font-black text-lg transition-all ${plan.popular ? 'bg-[#F2A900] hover:bg-[#D99800] text-black shadow-lg' : 'bg-white border-2 border-slate-100 text-slate-900 hover:border-slate-300 hover:bg-slate-50'}`}>
+                                        <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">Cotizar SketchUp {plan.name}</a>
+                                    </Button>
+                                </CardContent>
+                            </Card>
+                        </motion.div>
+                    ))}
+                </div>
+
+                <p className="mt-12 text-slate-400 font-bold text-xs max-w-2xl mx-auto uppercase tracking-tighter leading-relaxed">
+                    *PRECIOS SUJETOS A CAMBIO SIN PREVIO AVISO SEGÚN EL TIPO DE CAMBIO DEL DÓLAR. FACTURA MEXICANA DEDUCIBLE. PAGO POR TRANSFERENCIA O DEPÓSITO BANCARIO. CONTACTE A UN ASESOR PARA UN PRESUPUESTO FORMAL.
+                </p>
+            </div>
+        </section>
+    );
+};
+
+const BenefitsSection = () => (
+    <section className="py-24 bg-[#0A192F] text-white">
+        <div className="container">
+            <div className="mb-20 px-4">
+                <span className="text-blue-400 font-bold text-sm tracking-widest uppercase mb-4 block">VALOR AGREGADO</span>
+                <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
+                    Más que una licencia — <br />
+                    un socio tecnológico en México
+                </h2>
+                <p className="text-lg text-slate-400 font-medium leading-relaxed max-w-2xl">
+                    Comprar con nosotros significa contar con una estructura de soporte técnico y comercial siempre disponible para ti y tu equipo.
+                </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+                {[
+                    {
+                        icon: <Laptop className="text-blue-400" size={32} />,
+                        title: "Factura Fiscal Mexicana",
+                        desc: "Factura XML y PDF deducible 100% de impuestos en tu contabilidad."
+                    },
+                    {
+                        icon: <MessageCircle className="text-blue-400" size={32} />,
+                        title: "Asesor personal",
+                        desc: "Olvídate de los bots, te asignamos un asesor que te ayuda por WhatsApp o llamada."
+                    },
+                    {
+                        icon: <Zap className="text-blue-400" size={32} />,
+                        title: "Activación inmediata",
+                        desc: "En menos de 60 minutos tienes tu licencia activa y lista para usar en tu cuenta."
+                    },
+                    {
+                        icon: <Globe className="text-blue-400" size={32} />,
+                        title: "Soporte en tu idioma",
+                        desc: "Conexión remota por expertos locales para resolver errores técnicos o de instalación."
+                    },
+                    {
+                        icon: <Star className="text-blue-400" size={32} />,
+                        title: "Respaldo y seguridad",
+                        desc: "Tus licencias están a nombre de tu empresa, garantizando la continuidad de tus proyectos."
+                    },
+                    {
+                        icon: <Users className="text-blue-400" size={32} />,
+                        title: "Capacitación a la medida",
+                        desc: "Ofrecemos cursos para empresas para que tu equipo domine SketchUp y LayOut."
+                    }
+                ].map((item, i) => (
+                    <div key={i} className="bg-white/5 border border-white/10 rounded-[30px] p-8 hover:bg-white/10 transition-colors">
+                        <div className="mb-6">{item.icon}</div>
+                        <h4 className="text-xl font-black mb-3">{item.title}</h4>
+                        <p className="text-slate-400 font-medium leading-relaxed text-sm">{item.desc}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+);
+
+const FAQSection = () => (
+    <section className="py-24 bg-white">
+        <div className="container mx-auto px-4">
+            <h2 className="text-4xl font-black text-center text-[#0A192F] mb-16">Preguntas frecuentes</h2>
+            <div className="max-w-3xl mx-auto">
+                <Accordion type="single" collapsible className="space-y-4">
+                    {[
+                        { q: "¿En cuánto tiempo recibo mi licencia?", a: "La activación es inmediata. Una vez confirmado tu pago, nuestro equipo procesa tu licencia en Trimble y en menos de 60 minutos recibirás el correo de confirmación para activarla." },
+                        { q: "¿Me entregan factura mexicana?", a: "Sí, somos una empresa legalmente constituida en México. Emitimos factura CFDI 4.0 con el uso de CFDI que tu contador requiera, válida para deducir impuestos." },
+                        { q: "¿Puedo instalarla en más de un equipo?", a: "SketchUp Pro y Studio permiten ser instaladas en varias computadoras, pero el usuario solo puede tener una sesión activa a la vez. Es ideal para trabajar en tu oficina y luego en casa." },
+                        { q: "¿Qué incluye el soporte técnico?", a: "Incluye ayuda para la instalación inicial, resolución de errores de licencia y asesoría básica sobre los alcances del software. Lo hacemos vía remota, llamada o WhatsApp." },
+                        { q: "¿Hacen descuentos por varias licencias?", a: "Sí, a partir de 5 licencias contamos con planes de volumen especiales para despachos y empresas. Consulta a un asesor para una cotización personalizada." }
+                    ].map((faq, i) => (
+                        <AccordionItem key={i} value={`item-${i}`} className="border rounded-[25px] overflow-hidden px-6 transition-all hover:bg-slate-50 border-slate-200">
+                            <AccordionTrigger className="text-left font-black text-[#0A192F] py-6 hover:no-underline text-lg">
+                                {faq.q}
+                            </AccordionTrigger>
+                            <AccordionContent className="text-slate-600 font-medium pb-6 leading-relaxed">
+                                {faq.a}
+                            </AccordionContent>
+                        </AccordionItem>
+                    ))}
+                </Accordion>
+            </div>
+        </div>
+    </section>
+);
+
+const FooterCTA = () => (
+    <section className="py-20">
+        <div className="container px-4">
+            <div className="bg-gradient-to-r from-[#0E4FA5] to-[#2563EB] rounded-[50px] p-12 md:p-20 text-center text-white relative overflow-hidden shadow-2xl">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl" />
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-400/20 rounded-full -ml-32 -mb-32 blur-3xl" />
+
+                <div className="relative z-10 max-w-2xl mx-auto">
+                    <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">
+                        ¿Listo para empezar <br />
+                        con <span className="text-[#F2A900]">SketchUp</span>?
+                    </h2>
+                    <p className="text-blue-100 font-medium text-lg mb-10">
+                        Tenemos un asesor listo para brindarte la mejor atención humana y profesional. <br />
+                        Impulsa tus diseños hoy mismo con licencias originales.
+                    </p>
+                    <Button asChild size="lg" className="bg-[#25D366] hover:bg-[#22C35E] text-white font-black px-10 py-8 rounded-full text-xl shadow-xl shadow-[#25d36633]">
+                        <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                            <MessageCircle className="mr-3" size={24} /> Cotizar por WhatsApp
+                        </a>
+                    </Button>
+                </div>
+            </div>
+        </div>
+    </section>
+);
 
 const SketchupPlanes = () => {
     return (
-        <Layout>
-            {/* Hero Section */}
-            <section className="relative bg-gradient-to-br from-primary/5 via-background to-secondary/10 py-20 overflow-hidden">
-                <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent skew-x-12 opacity-50" />
-                <div className="container relative z-10">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="max-w-4xl mx-auto text-center"
-                    >
-                        {/* Authorized Reseller Badge (Placeholder Style) */}
-                        <div className="inline-flex items-center gap-2 bg-white border border-gray-200 rounded-full px-4 py-1.5 shadow-sm mb-8 mx-auto">
-                            <ShieldCheck size={18} className="text-blue-600" />
-                            <span className="text-sm font-bold text-gray-700 tracking-wide uppercase">SketchUp Authorized Reseller</span>
-                        </div>
-
-                        <h1 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
-                            Elige el <span className="text-secondary">Plan Perfecto</span> <br /> para tu Creatividad
-                        </h1>
-                        <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
-                            Desde el modelado conceptual hasta la construcción real. Somos tu socio local certificado para licencias originales y soporte técnico.
-                        </p>
-                        <div className="flex flex-wrap justify-center gap-4">
-                            <Button asChild size="lg" className="btn-primary shadow-lg hover:shadow-xl transition-all">
-                                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                                    Hablar con un Experto <MessageCircle className="ml-2" size={18} />
-                                </a>
-                            </Button>
-                            <Button asChild size="lg" variant="outline" className="btn-outline bg-white/50 backdrop-blur-sm">
-                                <Link to="/marcas">
-                                    Ver Catálogo Completo
-                                </Link>
-                            </Button>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Pricing Cards */}
-            <section className="py-20 bg-muted/20">
+        <div className="min-h-screen bg-white">
+            <Header />
+            <main>
+                <Hero />
+                <TrimbleSection />
+                <PricingSection />
+                <BenefitsSection />
+                <FAQSection />
+                <FooterCTA />
+            </main>
+            <footer className="bg-black py-12 text-center text-slate-500 border-t border-white/5">
                 <div className="container">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Planes diseñados para ti</h2>
-                        <p className="text-muted-foreground">Precios transparentes y facturación local en México.</p>
-                    </div>
-
-                    <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
-                        {plans.map((plan, index) => (
-                            <motion.div
-                                key={plan.name}
-                                initial={{ opacity: 0, y: 40 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: index * 0.1 }}
-                                className="relative flex"
-                            >
-                                {plan.popular && (
-                                    <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-20">
-                                        <Badge className="bg-gradient-brand text-white px-4 py-1.5 text-sm font-bold shadow-lg border-0 tracking-wide">
-                                            MÁS POPULAR
-                                        </Badge>
-                                    </div>
-                                )}
-                                <Card className={`flex flex-col w-full overflow-hidden transition-all duration-300 hover:shadow-xl ${plan.popular ? 'border-2 border-secondary shadow-elevated scale-105 z-10' : `border border-border hover:-translate-y-1 ${plan.color}`} ${plan.bg}`}>
-                                    <CardHeader className="pb-4">
-                                        <div className="flex justify-between items-start mb-4">
-                                            <div className="p-3 bg-white rounded-xl shadow-sm border border-gray-100">
-                                                {plan.icon}
-                                            </div>
-                                            {plan.popular && <Star className="text-secondary fill-secondary/20" size={24} />}
-                                        </div>
-                                        <h3 className="text-2xl font-bold">{plan.name}</h3>
-                                        <CardDescription className="text-foreground/80 font-medium mt-2">{plan.tagline}</CardDescription>
-                                    </CardHeader>
-                                    <CardContent className="flex-1">
-                                        <div className="mb-6 pb-6 border-b border-gray-200/50">
-                                            <div className="flex items-baseline gap-1">
-                                                <span className="text-3xl font-extrabold text-foreground">{plan.price}</span>
-                                                <span className="text-muted-foreground text-sm font-medium">{plan.period}</span>
-                                            </div>
-                                            <p className="text-xs text-muted-foreground mt-2">*Precios estimados, sujetos a cambio.</p>
-                                        </div>
-
-                                        <div className="space-y-4">
-                                            <p className="font-bold text-xs uppercase tracking-wider text-muted-foreground">Características principales</p>
-                                            <ul className="space-y-3">
-                                                {plan.features.map((feature, i) => (
-                                                    <li key={i} className="flex items-start gap-3 text-sm">
-                                                        <Check className={`mt-0.5 flex-shrink-0 ${plan.popular ? 'text-secondary' : 'text-primary'}`} size={16} />
-                                                        <span className="text-foreground/90">{feature}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </CardContent>
-                                    <CardFooter className="pt-4 pb-8">
-                                        <Button asChild className={`w-full font-bold shadow-md transition-all ${plan.popular ? 'btn-secondary text-lg py-6' : 'btn-primary'}`}>
-                                            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                                                {plan.buttonText} <ArrowRight className="ml-2" size={18} />
-                                            </a>
-                                        </Button>
-                                    </CardFooter>
-                                </Card>
-                            </motion.div>
-                        ))}
+                    <p className="font-bold mb-4 uppercase tracking-[0.2em] text-[10px]">TecnoActual.com — Distribuidor oficial Trimble SketchUp en México</p>
+                    <p className="text-xs max-w-3xl mx-auto leading-relaxed">
+                        SketchUp Pro, Go y Studio son marcas registradas de Trimble Inc. Todos los derechos reservados. <br />
+                        Licencias 100% originales vinculadas a su cuenta de Trimble. Precios incluyen impuestos.
+                    </p>
+                    <div className="mt-8 flex justify-center gap-8 text-[10px] font-black uppercase tracking-widest">
+                        <Link to="/legal" className="hover:text-blue-400 transition-colors">Términos y condiciones</Link>
+                        <Link to="/legal" className="hover:text-blue-400 transition-colors">Aviso de privacidad</Link>
                     </div>
                 </div>
-            </section>
-
-            {/* Comparison Table */}
-            <section className="py-20">
-                <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        className="max-w-4xl mx-auto"
-                    >
-                        <div className="text-center mb-12">
-                            <h2 className="text-3xl font-bold mb-4">Comparativa detallada</h2>
-                            <p className="text-muted-foreground">Analiza a detalle las capacidades de cada versión.</p>
-                        </div>
-
-                        <div className="bg-card rounded-xl border border-border shadow-soft overflow-hidden">
-                            <Table>
-                                <TableHeader>
-                                    <TableRow className="hover:bg-transparent bg-muted/50">
-                                        <TableHead className="w-[40%] font-bold text-foreground py-4 pl-6">Funcionalidades</TableHead>
-                                        <TableHead className="text-center font-bold text-foreground">Go</TableHead>
-                                        <TableHead className="text-center font-bold text-secondary text-lg">Pro</TableHead>
-                                        <TableHead className="text-center font-bold text-foreground">Studio</TableHead>
-                                    </TableRow>
-                                </TableHeader>
-                                <TableBody>
-                                    {comparisonData.map((item, index) => (
-                                        <TableRow key={index} className="hover:bg-muted/50 transition-colors">
-                                            <TableCell className="font-medium pl-6 py-4">{item.feature}</TableCell>
-                                            <TableCell className="text-center">
-                                                {item.go ? <Check className="mx-auto text-primary" size={20} /> : <X className="mx-auto text-muted/20" size={20} />}
-                                            </TableCell>
-                                            <TableCell className="text-center bg-secondary/5 border-x border-secondary/10">
-                                                {item.pro ? <Check className="mx-auto text-secondary" size={22} strokeWidth={3} /> : <X className="mx-auto text-muted/20" size={20} />}
-                                            </TableCell>
-                                            <TableCell className="text-center">
-                                                {item.studio ? <Check className="mx-auto text-primary" size={20} /> : <X className="mx-auto text-muted/20" size={20} />}
-                                            </TableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </div>
-                        <p className="text-center text-sm text-muted-foreground mt-8 bg-muted/30 py-3 rounded-lg border border-border/50">
-                            ¿Tienes dudas sobre qué plan elegir?{" "}
-                            <Link to="/contacto" className="text-primary underline underline-offset-2 hover:text-primary/80 transition-colors font-medium">
-                                Contáctanos y te asesoramos sin costo
-                            </Link>
-                            .
-                        </p>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Education & Why TecnoActual */}
-            <section className="py-20 bg-muted/30">
-                <div className="container">
-                    <div className="grid md:grid-cols-2 gap-12 items-center">
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                        >
-                            <div className="inline-block px-3 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-bold uppercase tracking-wide mb-4">
-                                Sector Académico
-                            </div>
-                            <h2 className="text-3xl font-bold mb-6">SketchUp para <span className="text-gradient-brand">Estudiantes y Educadores</span></h2>
-                            <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
-                                Impulsa tu aprendizaje con las mismas herramientas que utilizan los profesionales. La suscripción EDU ofrece todas las capacidades de SketchUp Studio a un precio especial.
-                            </p>
-                            <ul className="space-y-4 mb-8">
-                                <li className="flex items-center gap-3">
-                                    <div className="bg-white p-2 rounded-full shadow-sm">
-                                        <Zap className="text-secondary" size={20} />
-                                    </div>
-                                    <span className="font-medium">Acceso total a SketchUp Pro y LayOut</span>
-                                </li>
-                                <li className="flex items-center gap-3">
-                                    <div className="bg-white p-2 rounded-full shadow-sm">
-                                        <Zap className="text-secondary" size={20} />
-                                    </div>
-                                    <span className="font-medium">V-Ray para renderizado educativo</span>
-                                </li>
-                            </ul>
-                            <Button asChild variant="outline" size="lg" className="btn-outline border-secondary text-secondary hover:bg-secondary hover:text-white transition-all">
-                                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                                    Solicitar Precio Académico
-                                </a>
-                            </Button>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="bg-gradient-to-br from-[#1B3A57] to-[#0F1E2E] p-8 md:p-12 rounded-3xl text-white relative overflow-hidden shadow-2xl"
-                        >
-                            <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-secondary/20 rounded-full blur-3xl" />
-                            <div className="relative z-10">
-                                <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
-                                    <ShieldCheck className="text-secondary" size={32} />
-                                    ¿Por qué elegir TecnoActual?
-                                </h3>
-                                <div className="space-y-8">
-                                    <div className="flex gap-4 group">
-                                        <div className="mt-1 bg-white/10 p-2 rounded-xl group-hover:bg-secondary/20 transition-colors">
-                                            <Check size={20} className="text-secondary" />
-                                        </div>
-                                        <div>
-                                            <h4 className="font-bold mb-1 text-lg">Distribuidor Autorizado</h4>
-                                            <p className="text-sm text-white/70 leading-relaxed">Garantía de licencias 100% legales, oficiales y vinculadas directamente a tu cuenta de Trimble.</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex gap-4 group">
-                                        <div className="mt-1 bg-white/10 p-2 rounded-xl group-hover:bg-secondary/20 transition-colors">
-                                            <Check size={20} className="text-secondary" />
-                                        </div>
-                                        <div>
-                                            <h4 className="font-bold mb-1 text-lg">Asesoría Técnica Local</h4>
-                                            <p className="text-sm text-white/70 leading-relaxed">Hablamos tu idioma. Te ayudamos a instalar, configurar y resolver cualquier duda técnica.</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex gap-4 group">
-                                        <div className="mt-1 bg-white/10 p-2 rounded-xl group-hover:bg-secondary/20 transition-colors">
-                                            <Check size={20} className="text-secondary" />
-                                        </div>
-                                        <div>
-                                            <h4 className="font-bold mb-1 text-lg">Facturación Mexicana</h4>
-                                            <p className="text-sm text-white/70 leading-relaxed">Comprobantes fiscales válidos en México (CFDI) para todos nuestros servicios.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA Final */}
-            <section className="py-24 bg-white">
-                <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        className="text-center max-w-3xl mx-auto"
-                    >
-                        <h2 className="text-4xl font-bold mb-6 tracking-tight">
-                            ¿Listo para crear sin límites?
-                        </h2>
-                        <p className="text-xl text-muted-foreground mb-10">
-                            Únete a millones de profesionales que diseñan con SketchUp.
-                        </p>
-                        <div className="flex flex-col sm:flex-row justify-center gap-4">
-                            <Button asChild size="lg" className="btn-primary text-lg px-8 py-6 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all">
-                                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                                    Empezar Ahora <ArrowRight className="ml-2" size={20} />
-                                </a>
-                            </Button>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
-        </Layout>
+            </footer>
+        </div>
     );
 };
 
