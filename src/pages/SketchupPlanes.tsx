@@ -12,37 +12,75 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion";
 import logoHeader from "@/assets/logo-header.png";
-import sketchupLogo from "@/assets/products/sketchup.jpg";
+import sketchupReseller from "@/assets/sketchup-reseller-official.png";
+import Footer from "@/components/Footer";
 
 const WHATSAPP_NUMBER = "528181880009";
 const WHATSAPP_MESSAGE = encodeURIComponent("Hola, me interesa información sobre los planes de SketchUp.");
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 
-const Header = () => (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 py-3">
-        <div className="container mx-auto flex items-center justify-between">
-            <Link to="/">
-                <img src={logoHeader} alt="TecnoActual" className="h-8 md:h-10 w-auto" />
-            </Link>
-            <div className="flex items-center gap-4 md:gap-8">
-                <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-gray-50 rounded-full border border-gray-100 shadow-sm">
-                    <img src={sketchupLogo} alt="SketchUp" className="h-5 w-auto rounded" />
-                    <span className="text-[10px] md:text-xs font-bold text-slate-700 tracking-tight">AUTHORIZED RESELLER</span>
+const Header = () => {
+    const navigation = [
+        { name: 'Inicio', href: '/' },
+        { name: 'Marcas', href: '/marcas' },
+        { name: 'SketchUp', href: '/sketchup-planes' },
+        { name: 'Blog', href: '/blog' },
+        { name: 'Contacto', href: '/contacto' },
+    ];
+
+    return (
+        <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 py-3">
+            <div className="container mx-auto flex items-center justify-between">
+                <div className="flex items-center gap-8 lg:gap-12">
+                    <Link to="/">
+                        <img src={logoHeader} alt="TecnoActual" className="h-8 md:h-10 w-auto" />
+                    </Link>
+
+                    {/* Navigation Links */}
+                    <nav className="hidden xl:flex items-center gap-6">
+                        {navigation.map((item) => (
+                            <Link
+                                key={item.name}
+                                to={item.href}
+                                className="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors"
+                            >
+                                {item.name}
+                            </Link>
+                        ))}
+                    </nav>
                 </div>
-                <Button asChild size="sm" className="bg-[#F2A900] hover:bg-[#D99800] text-white font-bold rounded-full text-xs md:text-sm px-4 md:px-6 shadow-sm">
-                    <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                        <MessageCircle className="mr-2" size={16} /> Contáctanos por WhatsApp
-                    </a>
-                </Button>
+
+                <div className="flex items-center gap-4 md:gap-8">
+                    {/* Official Reseller Logo */}
+                    <div className="hidden sm:block">
+                        <img src={sketchupReseller} alt="SketchUp Authorized Reseller" className="h-6 md:h-10 w-auto" />
+                    </div>
+
+                    <Button asChild size="sm" className="bg-[#F2A900] hover:bg-[#D99800] text-white font-bold rounded-full text-[10px] md:text-sm px-3 md:px-6 shadow-sm">
+                        <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                            <MessageCircle className="mr-1 md:mr-2" size={14} /> <span className="hidden xs:inline">Contáctanos por</span> WhatsApp
+                        </a>
+                    </Button>
+                </div>
             </div>
-        </div>
-    </header>
-);
+        </header>
+    );
+};
 
 const Hero = () => (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 bg-[#0A192F] overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+            <img
+                src={heroBg}
+                alt="Background"
+                className="w-full h-full object-cover opacity-30 grayscale"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0A192F]/80 via-[#0A192F]/90 to-[#0A192F]" />
+        </div>
+
         {/* Abstract Background Elements */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none z-1">
             <div className="absolute top-[-10%] right-[-5%] w-[400px] h-[400px] bg-blue-500 rounded-full blur-[120px]" />
             <div className="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-[#F2A900] rounded-full blur-[150px] opacity-30" />
         </div>
@@ -86,7 +124,7 @@ const Hero = () => (
                 <Button asChild size="lg" className="bg-[#F2A900] hover:bg-[#D99800] text-black font-black px-8 py-7 rounded-full text-lg shadow-xl shadow-[#f2a90022]">
                     <a href="#precios">Ver precios en MXN <ArrowRight className="ml-2" size={20} /></a>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="border-2 border-white/20 hover:bg-white/10 text-white font-black px-8 py-7 rounded-full text-lg">
+                <Button asChild variant="outline" size="lg" className="border-2 border-white/20 bg-white hover:bg-white/90 text-[#0A192F] font-black px-8 py-7 rounded-full text-lg shadow-lg">
                     <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">Hablar con un asesor</a>
                 </Button>
             </motion.div>
@@ -411,19 +449,7 @@ const SketchupPlanes = () => {
                 <FAQSection />
                 <FooterCTA />
             </main>
-            <footer className="bg-black py-12 text-center text-slate-500 border-t border-white/5">
-                <div className="container">
-                    <p className="font-bold mb-4 uppercase tracking-[0.2em] text-[10px]">TecnoActual.com — Distribuidor oficial Trimble SketchUp en México</p>
-                    <p className="text-xs max-w-3xl mx-auto leading-relaxed">
-                        SketchUp Pro, Go y Studio son marcas registradas de Trimble Inc. Todos los derechos reservados. <br />
-                        Licencias 100% originales vinculadas a su cuenta de Trimble. Precios incluyen impuestos.
-                    </p>
-                    <div className="mt-8 flex justify-center gap-8 text-[10px] font-black uppercase tracking-widest">
-                        <Link to="/legal" className="hover:text-blue-400 transition-colors">Términos y condiciones</Link>
-                        <Link to="/legal" className="hover:text-blue-400 transition-colors">Aviso de privacidad</Link>
-                    </div>
-                </div>
-            </footer>
+            <Footer />
         </div>
     );
 };
