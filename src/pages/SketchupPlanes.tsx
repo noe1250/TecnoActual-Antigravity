@@ -146,7 +146,7 @@ const Hero = () => (
                     <Check className="text-[#F2A900]" size={16} /> Soporte en español
                 </div>
                 <div className="flex items-center gap-2 text-blue-200/80 font-bold text-xs md:text-sm">
-                    <Check className="text-[#F2A900]" size={16} /> Activación en minutos
+                    <Check className="text-[#F2A900]" size={16} /> Activación en muy poco tiempo
                 </div>
             </motion.div>
         </div>
@@ -295,7 +295,7 @@ const PricingSection = () => {
                                         <span className="text-slate-900 text-[10px] font-bold">$</span>
                                         <span className={`text-4xl md:text-5xl font-black ${plan.color}`}>{plan.price}</span>
                                     </div>
-                                    <span className="text-slate-500 font-bold text-xs mb-8 block uppercase tracking-tighter">MXN + IVA (Suscripción anual)</span>
+                                    <span className="text-slate-500 font-bold text-xs mb-8 block uppercase tracking-tighter">MXN (IVA INCLUIDO) - Suscripción anual</span>
 
                                     <div className="space-y-5 mb-10 flex-1">
                                         {plan.features.map((feature, j) => (
@@ -354,7 +354,7 @@ const BenefitsSection = () => (
                     {
                         icon: <Zap className="text-blue-400" size={32} />,
                         title: "Activación inmediata",
-                        desc: "En menos de 60 minutos tienes tu licencia activa y lista para usar en tu cuenta."
+                        desc: "Tu licencia se activa en un tiempo muy corto, quedando lista para usar en tu cuenta."
                     },
                     {
                         icon: <Globe className="text-blue-400" size={32} />,
@@ -390,7 +390,7 @@ const FAQSection = () => (
             <div className="max-w-3xl mx-auto">
                 <Accordion type="single" collapsible className="space-y-4">
                     {[
-                        { q: "¿En cuánto tiempo recibo mi licencia?", a: "La activación es inmediata. Una vez confirmado tu pago, nuestro equipo procesa tu licencia en Trimble y en menos de 60 minutos recibirás el correo de confirmación para activarla." },
+                        { q: "¿En cuánto tiempo recibo mi licencia?", a: "La activación es inmediata. Una vez confirmado tu pago, nuestro equipo procesa tu licencia en Trimble y en muy poco tiempo recibirás el correo de confirmación para activarla." },
                         { q: "¿Me entregan factura mexicana?", a: "Sí, somos una empresa legalmente constituida en México. Emitimos factura CFDI 4.0 con el uso de CFDI que tu contador requiera, válida para deducir impuestos." },
                         { q: "¿Puedo instalarla en más de un equipo?", a: "SketchUp Pro y Studio permiten ser instaladas en varias computadoras, pero el usuario solo puede tener una sesión activa a la vez. Es ideal para trabajar en tu oficina y luego en casa." },
                         { q: "¿Qué incluye el soporte técnico?", a: "Incluye ayuda para la instalación inicial, resolución de errores de licencia y asesoría básica sobre los alcances del software. Lo hacemos vía remota, llamada o WhatsApp." },
