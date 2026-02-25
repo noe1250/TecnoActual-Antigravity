@@ -225,7 +225,7 @@ const PricingSection = () => {
     const plans = [
         {
             name: "Go",
-            price: "2,569",
+            price: "2,573",
             oldPrice: "2,850",
             features: [
                 "Para modelado en iPad y Web",
@@ -238,7 +238,7 @@ const PricingSection = () => {
         },
         {
             name: "Pro",
-            price: "7,048",
+            price: "7,960",
             oldPrice: "7,830",
             popular: true,
             features: [
@@ -253,7 +253,7 @@ const PricingSection = () => {
         },
         {
             name: "Studio",
-            price: "16,326",
+            price: "16,340",
             oldPrice: "18,140",
             features: [
                 "Todo lo de Pro más:",
