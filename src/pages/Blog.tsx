@@ -4,10 +4,17 @@ import { Calendar, ArrowRight } from "lucide-react";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import imgChecklist from "@/assets/blog-arquitectura-checklist.png";
+import imgSolidworks2026 from "@/assets/blog-solidworks-2026.png";
+import imgSketchupLegal from "@/assets/blog-sketchup-legal.png";
+import imgWorkstationTest from "@/assets/blog-solidworks-workstation-test.png";
+import imgWorkstationRender from "@/assets/blog-workstation-render.png";
+import imgSuscripcion from "@/assets/blog-software-suscripcion.png";
+import imgBienvenida from "@/assets/blog-bienvenida.png";
 
 const blogPosts = [
   {
-    id: 6,
+    id: 7,
     title: "¿Tu despacho está listo? Checklist técnico para migrar tu estudio de arquitectura al software por suscripción",
     excerpt: "Una lista práctica para evaluar si tu oficina está preparada para trabajar 100% con software empresarial por suscripción: infraestructura, internet, equipos y licencias legales.",
     date: "28 de Abril, 2026",
@@ -15,9 +22,10 @@ const blogPosts = [
     color: "primary",
     ctaLink: "/blog/checklist-migracion-arquitectura",
     ctaLabel: "Leer checklist",
+    image: imgChecklist,
   },
   {
-    id: 5,
+    id: 6,
     title: "SolidWorks por suscripción en 2026: lo que nadie te contó antes de renovar tu licencia",
     excerpt: "Analizamos los cambios más importantes del modelo por suscripción de SolidWorks, sus ventajas frente a las licencias perpetuas y cómo calcular si realmente te conviene en tu empresa.",
     date: "21 de Abril, 2026",
@@ -25,9 +33,10 @@ const blogPosts = [
     color: "primary",
     ctaLink: "/blog/solidworks-suscripcion-2026",
     ctaLabel: "Leer análisis",
+    image: imgSolidworks2026,
   },
   {
-    id: 1,
+    id: 5,
     title: "SketchUp Pro en México: la guía definitiva para dejar atrás las licencias pirata",
     excerpt: "Descubre por qué cada vez más despachos de arquitectura en México migran a SketchUp Pro legal y cómo una licencia por suscripción puede ahorrarte dinero, auditorías y dolores de cabeza.",
     date: "31 de Marzo, 2026",
@@ -35,10 +44,11 @@ const blogPosts = [
     color: "primary",
     ctaLink: "/blog/sketchup-pro-mexico-licencia-legal",
     ctaLabel: "Leer guía completa",
+    image: imgSketchupLegal,
   },
 
   {
-    id: 2,
+    id: 4,
     title: "SolidWorks + workstation correcta: prueba de rendimiento con un ensamble",
     excerpt: "Probamos un mismo ensamble complejo de SolidWorks en diferentes configuraciones de equipo para mostrar en números cuándo es momento de renovar tu workstation.",
     date: "14 de Abril, 2026",
@@ -46,6 +56,7 @@ const blogPosts = [
     color: "primary",
     ctaLink: "/blog/solidworks-workstation-rendimiento",
     ctaLabel: "Leer prueba completa",
+    image: imgWorkstationTest,
   },
   {
     id: 3,
@@ -56,10 +67,11 @@ const blogPosts = [
     color: "secondary",
     ctaLink: "/blog/workstation-para-diseno-3d",
     ctaLabel: "Leer comparativa",
+    image: imgWorkstationRender,
   },
 
   {
-    id: 3,
+    id: 2,
     title: "¿Por qué cambiar a software por suscripción?",
     excerpt: "El modelo tradicional de comprar licencias perpetuas está quedando atrás. Te explicamos las ventajas del software por suscripción: costos predecibles mensuales o anuales, siempre tienes la última versión, soporte técnico incluido y más.",
     date: "25 de Octubre, 2025",
@@ -67,9 +79,10 @@ const blogPosts = [
     color: "primary",
     ctaLink: "/blog/software-por-suscripcion",
     ctaLabel: "Leer artículo",
+    image: imgSuscripcion,
   },
   {
-    id: 4,
+    id: 1,
     title: "Bienvenido al nuevo TecnoActual",
     excerpt: "Después de 20 años en el negocio de TI, hemos decidido especializarnos en lo que mejor sabemos hacer: software empresarial por suscripción. Nuestro objetivo es ayudarte a tener siempre las mejores herramientas, en sus versiones más actuales, con el mejor servicio.",
     date: "1 de Octubre, 2025",
@@ -77,6 +90,7 @@ const blogPosts = [
     color: "secondary",
     ctaLink: "/blog/bienvenida-al-nuevo-tecnoactual",
     ctaLabel: "Leer artículo",
+    image: imgBienvenida,
   },
 ];
 
@@ -117,9 +131,16 @@ const Blog = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Card className="feature-card h-full flex flex-col overflow-hidden">
-                  <div className={`h-3 ${post.color === 'primary' ? 'bg-primary' : 'bg-secondary'}`} />
-                  <CardHeader>
+                <Card className="feature-card h-full flex flex-col overflow-hidden p-0 group">
+                  <div className="relative aspect-video overflow-hidden">
+                    <img 
+                      src={post.image} 
+                      alt={post.title} 
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className={`absolute top-0 left-0 w-full h-1 ${post.color === 'primary' ? 'bg-primary' : 'bg-secondary'}`} />
+                  </div>
+                  <CardHeader className="p-6 pb-0">
                     <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
                       <span className={`px-3 py-1 rounded-full text-xs font-medium ${post.color === 'primary'
                         ? 'bg-primary/10 text-primary'
@@ -132,15 +153,15 @@ const Blog = () => {
                         {post.date}
                       </div>
                     </div>
-                    <CardTitle className="text-xl leading-tight">{post.title}</CardTitle>
+                    <CardTitle className="text-xl leading-tight group-hover:text-primary transition-colors">{post.title}</CardTitle>
                   </CardHeader>
-                  <CardContent className="flex-1 flex flex-col">
-                    <CardDescription className="flex-1 leading-relaxed">
+                  <CardContent className="flex-1 flex flex-col p-6 pt-3">
+                    <CardDescription className="flex-1 leading-relaxed line-clamp-3">
                       {post.excerpt}
                     </CardDescription>
                     <Link
                       to={post.ctaLink}
-                      className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline underline-offset-4 transition-colors"
+                      className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:gap-2 transition-all"
                     >
                       {post.ctaLabel} <ArrowRight size={15} />
                     </Link>
