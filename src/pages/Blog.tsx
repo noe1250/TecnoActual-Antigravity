@@ -6,6 +6,57 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const blogPosts = [
+  {
+    id: 6,
+    title: "¿Tu despacho está listo? Checklist técnico para migrar tu estudio de arquitectura al software por suscripción",
+    excerpt: "Una lista práctica para evaluar si tu oficina está preparada para trabajar 100% con software empresarial por suscripción: infraestructura, internet, equipos y licencias legales.",
+    date: "28 de Abril, 2026",
+    category: "Guías",
+    color: "primary",
+    ctaLink: "/blog/checklist-migracion-arquitectura",
+    ctaLabel: "Leer checklist",
+  },
+  {
+    id: 5,
+    title: "SolidWorks por suscripción en 2026: lo que nadie te contó antes de renovar tu licencia",
+    excerpt: "Analizamos los cambios más importantes del modelo por suscripción de SolidWorks, sus ventajas frente a las licencias perpetuas y cómo calcular si realmente te conviene en tu empresa.",
+    date: "21 de Abril, 2026",
+    category: "Estrategia",
+    color: "primary",
+    ctaLink: "/blog/solidworks-suscripcion-2026",
+    ctaLabel: "Leer análisis",
+  },
+  {
+    id: 1,
+    title: "SketchUp Pro en México: la guía definitiva para dejar atrás las licencias pirata",
+    excerpt: "Descubre por qué cada vez más despachos de arquitectura en México migran a SketchUp Pro legal y cómo una licencia por suscripción puede ahorrarte dinero, auditorías y dolores de cabeza.",
+    date: "31 de Marzo, 2026",
+    category: "Guías",
+    color: "primary",
+    ctaLink: "/blog/sketchup-pro-mexico-licencia-legal",
+    ctaLabel: "Leer guía completa",
+  },
+
+  {
+    id: 2,
+    title: "SolidWorks + workstation correcta: prueba de rendimiento con un ensamble",
+    excerpt: "Probamos un mismo ensamble complejo de SolidWorks en diferentes configuraciones de equipo para mostrar en números cuándo es momento de renovar tu workstation.",
+    date: "14 de Abril, 2026",
+    category: "Pruebas",
+    color: "primary",
+    ctaLink: "/blog/solidworks-workstation-rendimiento",
+    ctaLabel: "Leer prueba completa",
+  },
+  {
+    id: 3,
+    title: "El error que frena tus renders: así se ve un proyecto cuando tu workstation sí está a la altura",
+    excerpt: "Compara paso a paso el rendimiento real entre una PC de oficina y una workstation profesional optimizada para SketchUp y SolidWorks, con tiempos de render medidos en un caso real.",
+    date: "31 de Marzo, 2026",
+    category: "Comparativas",
+    color: "secondary",
+    ctaLink: "/blog/workstation-para-diseno-3d",
+    ctaLabel: "Leer comparativa",
+  },
 
   {
     id: 3,
@@ -14,8 +65,8 @@ const blogPosts = [
     date: "25 de Octubre, 2025",
     category: "Artículos",
     color: "primary",
-    ctaLink: "/marcas",
-    ctaLabel: "Ver nuestras soluciones por suscripción",
+    ctaLink: "/blog/software-por-suscripcion",
+    ctaLabel: "Leer artículo",
   },
   {
     id: 4,
@@ -24,8 +75,8 @@ const blogPosts = [
     date: "1 de Octubre, 2025",
     category: "Noticias",
     color: "secondary",
-    ctaLink: "/contacto",
-    ctaLabel: "Contáctanos",
+    ctaLink: "/blog/bienvenida-al-nuevo-tecnoactual",
+    ctaLabel: "Leer artículo",
   },
 ];
 

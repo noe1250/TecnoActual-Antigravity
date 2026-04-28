@@ -2,10 +2,12 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle, Headphones, RefreshCw, Users, Calendar, Shield, TrendingUp, MessageCircle } from "lucide-react";
 import Layout from "@/components/Layout";
+import BrandCarousel from "@/components/BrandCarousel";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import heroBg from "@/assets/hero-bg.jpg";
-import teamAbout from "@/assets/team-about.jpg";
+import heroVideoBg from "@/assets/portada01.mp4";
+import teamAbout from "@/assets/tecnoactual-proveedores.png";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -30,12 +32,19 @@ const Index = () => {
     <Layout>
       {/* Hero Section */}
       <section className="relative overflow-hidden min-h-[90vh] flex items-center">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroBg})` }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/40" />
+        {/* Background Video */}
+        <div className="absolute inset-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src={heroVideoBg} type="video/mp4" />
+          </video>
+          {/* Capa de color azul para contrastar el texto blanco */}
+          <div className="absolute inset-0 bg-gradient-dark opacity-85" />
         </div>
 
         <div className="container relative z-10 py-20">
@@ -45,11 +54,11 @@ const Index = () => {
             transition={{ duration: 0.6 }}
             className="max-w-2xl"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white">
               Software y Tecnología{" "}
               <span className="text-gradient-brand">Siempre Actual</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
+            <p className="text-lg md:text-xl text-white/90 mb-8 max-w-xl">
               Soluciones por suscripción que mantienen tu negocio competitivo con las mejores herramientas, siempre actualizadas.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -68,6 +77,9 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Brand Logo Carousel */}
+      <BrandCarousel />
 
       {/* About Section */}
       <section className="section bg-card">
@@ -90,7 +102,7 @@ const Index = () => {
               >
                 <img
                   src={teamAbout}
-                  alt="Equipo TecnoActual"
+                  alt="Proveedores de Software TecnoActual"
                   className="w-full h-[400px] object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
@@ -188,7 +200,7 @@ const Index = () => {
       </section>
 
       {/* Why Subscription Model */}
-      <section className="section bg-foreground text-background">
+      <section className="section bg-[#080f2a] text-background">
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <motion.div

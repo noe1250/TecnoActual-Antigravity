@@ -132,8 +132,8 @@ export default {
       },
       boxShadow: {
         "soft": "0 4px 20px -4px hsl(215 85% 68% / 0.15)",
-        "card": "0 2px 12px -2px hsl(220 25% 12% / 0.08)",
-        "elevated": "0 12px 40px -12px hsl(220 25% 12% / 0.15)",
+        "card": "0 2px 12px -2px hsl(227 73% 10% / 0.08)",
+        "elevated": "0 12px 40px -12px hsl(227 73% 10% / 0.15)",
       },
     },
   },

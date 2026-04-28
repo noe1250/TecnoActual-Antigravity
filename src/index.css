@@ -19,15 +19,15 @@
     
     /* Background & Foreground */
     --background: 220 20% 97%;
-    --foreground: 220 25% 12%;
+    --foreground: 227 73% 10%;
 
     /* Card Surfaces */
     --card: 0 0% 100%;
-    --card-foreground: 220 25% 12%;
+    --card-foreground: 227 73% 10%;
 
     /* Popover */
     --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 12%;
+    --popover-foreground: 227 73% 10%;
 
     /* Primary (Blue Tecno) */
     --primary: 215 85% 68%;
@@ -69,31 +69,31 @@
     /* Custom Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(215 85% 68%) 0%, hsl(215 85% 55%) 100%);
     --gradient-orange: linear-gradient(135deg, hsl(38 94% 50%) 0%, hsl(38 94% 42%) 100%);
-    --gradient-dark: linear-gradient(135deg, hsl(220 25% 12%) 0%, hsl(220 25% 18%) 100%);
+    --gradient-dark: linear-gradient(135deg, #080f2a 0%, #1a3d8f 100%);
     
     /* Shadows */
     --shadow-soft: 0 4px 20px -4px hsl(215 85% 68% / 0.15);
-    --shadow-card: 0 2px 12px -2px hsl(220 25% 12% / 0.08);
-    --shadow-elevated: 0 12px 40px -12px hsl(220 25% 12% / 0.15);
+    --shadow-card: 0 2px 12px -2px hsl(227 73% 10% / 0.08);
+    --shadow-elevated: 0 12px 40px -12px hsl(227 73% 10% / 0.15);
   }
 
   .dark {
-    --background: 220 25% 8%;
+    --background: 227 73% 7%;
     --foreground: 220 15% 95%;
 
-    --card: 220 25% 12%;
+    --card: 227 73% 10%;
     --card-foreground: 220 15% 95%;
 
-    --popover: 220 25% 12%;
+    --popover: 227 73% 10%;
     --popover-foreground: 220 15% 95%;
 
     --primary: 215 85% 68%;
-    --primary-foreground: 220 25% 8%;
+    --primary-foreground: 227 73% 7%;
 
     --secondary: 38 94% 50%;
-    --secondary-foreground: 220 25% 8%;
+    --secondary-foreground: 227 73% 7%;
 
-    --muted: 220 20% 18%;
+    --muted: 223 50% 18%;
     --muted-foreground: 220 10% 60%;
 
     --accent: 215 85% 20%;
@@ -102,17 +102,17 @@
     --destructive: 0 62% 40%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 20% 20%;
-    --input: 220 20% 20%;
+    --border: 223 50% 20%;
+    --input: 223 50% 20%;
     --ring: 215 85% 68%;
 
-    --sidebar-background: 220 25% 10%;
+    --sidebar-background: 227 73% 10%;
     --sidebar-foreground: 220 15% 95%;
     --sidebar-primary: 215 85% 68%;
-    --sidebar-primary-foreground: 220 25% 8%;
-    --sidebar-accent: 220 20% 15%;
+    --sidebar-primary-foreground: 227 73% 7%;
+    --sidebar-accent: 223 50% 15%;
     --sidebar-accent-foreground: 220 15% 95%;
-    --sidebar-border: 220 20% 18%;
+    --sidebar-border: 223 50% 18%;
     --sidebar-ring: 215 85% 68%;
   }
 }
@@ -267,6 +267,88 @@
   .nav-link:hover::after,
   .nav-link.active::after {
     @apply scale-x-100;
+  }
+
+  /* Brand Carousel */
+  .brand-carousel-section {
+    @apply py-10 md:py-14 bg-card border-y border-border overflow-hidden;
+  }
+
+  .carousel-mask {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .carousel-mask::before,
+  .carousel-mask::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .carousel-mask::before {
+    left: 0;
+    background: linear-gradient(to right, hsl(var(--card)), transparent);
+  }
+
+  .carousel-mask::after {
+    right: 0;
+    background: linear-gradient(to left, hsl(var(--card)), transparent);
+  }
+
+  .carousel-track {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    width: max-content;
+    animation: scroll-brands 30s linear infinite;
+  }
+
+  .carousel-track:hover {
+    animation-play-state: paused;
+  }
+
+  .carousel-item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.4s ease;
+    filter: grayscale(100%);
+    opacity: 0.55;
+  }
+
+  .carousel-item:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.08);
+  }
+
+  .carousel-logo {
+    width: auto;
+    max-width: 302px;
+    object-fit: contain;
+  }
+
+  @media (min-width: 768px) {
+    .carousel-logo {
+      max-width: 378px;
+    }
+  }
+
+  @keyframes scroll-brands {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
 }
 

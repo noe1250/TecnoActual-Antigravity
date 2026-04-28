@@ -8,6 +8,7 @@ import sketchupImg from "@/assets/products/sketchup.jpg";
 import solidworksImg from "@/assets/products/solidworks.jpg";
 import workstationsImg from "@/assets/products/workstations.jpg";
 import hardwareAccessoriesImg from "@/assets/products/hardware-accessories.png";
+import bricscadImg from "@/assets/products/bricscad-architecture.jpg";
 
 const WHATSAPP_NUMBER = "528181880009";
 const WHATSAPP_MESSAGE = encodeURIComponent("Hola, me interesa información sobre sus soluciones de software.");
@@ -32,6 +33,8 @@ const products = [
     name: "SolidWorks",
     description: "CAD 3D profesional para ingeniería y manufactura",
     image: solidworksImg,
+    showPlans: true,
+    descriptionLink: { to: "/solidworks", label: "Ver planes de SolidWorks" },
     features: [
       "Diseño paramétrico 3D avanzado",
       "Simulación y análisis de esfuerzos",
@@ -39,6 +42,20 @@ const products = [
       "Gestión de datos de producto (PDM)",
       "Diseño eléctrico y de cableado",
       "Renderizado fotorrealista",
+    ],
+  },
+  {
+    name: "BricsCAD",
+    description: "Alternativa CAD moderna, compatible y accesible",
+    image: bricscadImg,
+    showPlans: true,
+    descriptionLink: { to: "/bricscad", label: "Ver planes de BricsCAD" },
+    features: [
+      "DWG nativo al 100%",
+      "Interfaz familiar y fácil transición",
+      "Licencias perpetuas y suscripciones",
+      "Modelado 3D, BIM y Mecánica",
+      "Herramientas impulsadas por IA",
     ],
   },
   {
@@ -152,9 +169,9 @@ const Marcas = () => {
                             Solicitar Cotización <ArrowRight className="ml-2" size={18} />
                           </a>
                         </Button>
-                        {product.showPlans && (
+                        {product.showPlans && product.descriptionLink && (
                           <Button asChild variant="outline" className="w-full border-secondary text-secondary hover:bg-secondary/10">
-                            <Link to="/sketchup-planes">
+                            <Link to={product.descriptionLink.to}>
                               Ver planes
                             </Link>
                           </Button>

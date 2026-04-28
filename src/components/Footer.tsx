@@ -6,7 +6,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-foreground text-background py-16">
+    <footer className="bg-[#080f2a] text-background py-16">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand Column */}
@@ -31,7 +31,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/marcas" className="text-background/80 hover:text-background transition-colors">
+                <Link to="/solidworks" className="text-background/80 hover:text-background transition-colors">
                   SolidWorks
                 </Link>
               </li>

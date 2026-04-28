@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Check, ArrowRight, MessageCircle, ShieldCheck, Phone, Globe, Zap, Heart, Star, Clock, Laptop, Layers, Users, HelpCircle, ChevronDown } from "lucide-react";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -16,60 +15,27 @@ import sketchupReseller from "@/assets/sketchup-reseller-official.png";
 import heroBg from "@/assets/hero-bg.jpg";
 import Footer from "@/components/Footer";
 
+import GlobalHeader from "@/components/Header";
+
 const WHATSAPP_NUMBER = "528181880009";
 const WHATSAPP_MESSAGE = encodeURIComponent("Hola, me interesa información sobre los planes de SketchUp.");
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 
-const Header = () => {
-    const navigation = [
-        { name: 'Inicio', href: '/' },
-        { name: 'Marcas', href: '/marcas' },
-        { name: 'SketchUp', href: '/sketchup-planes' },
-        { name: 'Blog', href: '/blog' },
-        { name: 'Contacto', href: '/contacto' },
-    ];
-
-    return (
-        <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 py-3">
-            <div className="container mx-auto flex items-center justify-between">
-                <div className="flex items-center gap-8 lg:gap-12">
-                    <Link to="/">
-                        <img src={logoHeader} alt="TecnoActual" className="h-8 md:h-10 w-auto" />
-                    </Link>
-
-                    {/* Navigation Links */}
-                    <nav className="hidden xl:flex items-center gap-6">
-                        {navigation.map((item) => (
-                            <Link
-                                key={item.name}
-                                to={item.href}
-                                className="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors"
-                            >
-                                {item.name}
-                            </Link>
-                        ))}
-                    </nav>
-                </div>
-
-                <div className="flex items-center gap-4 md:gap-8">
-                    {/* Official Reseller Logo */}
-                    <div className="hidden sm:block">
-                        <img src={sketchupReseller} alt="SketchUp Authorized Reseller" className="h-6 md:h-10 w-auto" />
-                    </div>
-
-                    <Button asChild size="sm" className="bg-[#F2A900] hover:bg-[#D99800] text-white font-bold rounded-full text-[10px] md:text-sm px-3 md:px-6 shadow-sm">
-                        <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                            <MessageCircle className="mr-1 md:mr-2" size={14} /> <span className="hidden xs:inline">Contáctanos por</span> WhatsApp
-                        </a>
-                    </Button>
-                </div>
-            </div>
-        </header>
-    );
-};
+const SketchupRightContent = () => (
+    <>
+        <div className="hidden sm:block">
+            <img src={sketchupReseller} alt="SketchUp Authorized Reseller" className="h-6 md:h-10 w-auto" />
+        </div>
+        <Button asChild size="sm" className="bg-[#F2A900] hover:bg-[#D99800] text-white font-bold rounded-full text-[10px] md:text-sm px-3 md:px-6 shadow-sm">
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="mr-1 md:mr-2" size={14} /> <span className="hidden xs:inline">Contáctanos por</span> WhatsApp
+            </a>
+        </Button>
+    </>
+);
 
 const Hero = () => (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 bg-[#0A192F] overflow-hidden">
+    <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 bg-[#080f2a] overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
             <img
@@ -77,7 +43,7 @@ const Hero = () => (
                 alt="Background"
                 className="w-full h-full object-cover opacity-30 grayscale"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0A192F]/80 via-[#0A192F]/90 to-[#0A192F]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#080f2a]/80 via-[#080f2a]/90 to-[#080f2a]" />
         </div>
 
         {/* Abstract Background Elements */}
@@ -125,7 +91,7 @@ const Hero = () => (
                 <Button asChild size="lg" className="bg-[#F2A900] hover:bg-[#D99800] text-black font-black px-8 py-7 rounded-full text-lg shadow-xl shadow-[#f2a90022]">
                     <a href="#precios">Ver precios en MXN <ArrowRight className="ml-2" size={20} /></a>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="border-2 border-white/20 bg-white hover:bg-white/90 text-[#0A192F] font-black px-8 py-7 rounded-full text-lg shadow-lg">
+                <Button asChild variant="outline" size="lg" className="border-2 border-white/20 bg-white hover:bg-white/90 text-[#080f2a] font-black px-8 py-7 rounded-full text-lg shadow-lg">
                     <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">Hablar con un asesor</a>
                 </Button>
             </motion.div>
@@ -158,7 +124,7 @@ const TrimbleSection = () => (
         <div className="container">
             <div className="max-w-4xl mb-16 px-4">
                 <span className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4 block">COMPROMISO CON MÉXICO</span>
-                <h2 className="text-4xl md:text-5xl font-black text-[#0A192F] mb-6 leading-tight">
+                <h2 className="text-4xl md:text-5xl font-black text-[#080f2a] mb-6 leading-tight">
                     Licencia oficial Trimble, <br />
                     <span className="text-blue-600">con el servicio local que tu proyecto merece</span>
                 </h2>
@@ -175,7 +141,7 @@ const TrimbleSection = () => (
                         <div className="bg-white w-12 h-12 rounded-2xl flex items-center justify-center mb-8 shadow-sm">
                             <Layers className="text-blue-600" size={24} />
                         </div>
-                        <h3 className="text-2xl font-black text-[#0A192F] mb-6">Para tu empresa o despacho</h3>
+                        <h3 className="text-2xl font-black text-[#080f2a] mb-6">Para tu empresa o despacho</h3>
                         <ul className="space-y-4">
                             {[
                                 "Licencia 100% legal Trimble México",
@@ -199,7 +165,7 @@ const TrimbleSection = () => (
                         <div className="bg-white w-12 h-12 rounded-2xl flex items-center justify-center mb-8 shadow-sm">
                             <Star className="text-green-600" size={24} />
                         </div>
-                        <h3 className="text-2xl font-black text-[#0A192F] mb-6">Para tu éxito profesional</h3>
+                        <h3 className="text-2xl font-black text-[#080f2a] mb-6">Para tu éxito profesional</h3>
                         <ul className="space-y-4">
                             {[
                                 "Asesoría para elegir el mejor plan",
@@ -271,7 +237,7 @@ const PricingSection = () => {
         <section id="precios" className="py-24 bg-gray-50">
             <div className="container text-center">
                 <span className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4 block">PLANES Y PRECIOS</span>
-                <h2 className="text-4xl md:text-5xl font-black text-[#0A192F] mb-6">Elige tu versión de SketchUp</h2>
+                <h2 className="text-4xl md:text-5xl font-black text-[#080f2a] mb-6">Elige tu versión de SketchUp</h2>
                 <p className="text-slate-600 font-medium mb-16">Invierte en la herramienta que impulsa tu carrera profesional.</p>
 
                 <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto px-4">
@@ -326,7 +292,7 @@ const PricingSection = () => {
 };
 
 const BenefitsSection = () => (
-    <section className="py-24 bg-[#0A192F] text-white">
+    <section className="py-24 bg-[#080f2a] text-white">
         <div className="container">
             <div className="mb-20 px-4">
                 <span className="text-blue-400 font-bold text-sm tracking-widest uppercase mb-4 block">VALOR AGREGADO</span>
@@ -386,7 +352,7 @@ const BenefitsSection = () => (
 const FAQSection = () => (
     <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-black text-center text-[#0A192F] mb-16">Preguntas frecuentes</h2>
+            <h2 className="text-4xl font-black text-center text-[#080f2a] mb-16">Preguntas frecuentes</h2>
             <div className="max-w-3xl mx-auto">
                 <Accordion type="single" collapsible className="space-y-4">
                     {[
@@ -397,7 +363,7 @@ const FAQSection = () => (
                         { q: "¿Hacen descuentos por varias licencias?", a: "Sí, a partir de 5 licencias contamos con planes de volumen especiales para despachos y empresas. Consulta a un asesor para una cotización personalizada." }
                     ].map((faq, i) => (
                         <AccordionItem key={i} value={`item-${i}`} className="border rounded-[25px] overflow-hidden px-6 transition-all hover:bg-slate-50 border-slate-200">
-                            <AccordionTrigger className="text-left font-black text-[#0A192F] py-6 hover:no-underline text-lg">
+                            <AccordionTrigger className="text-left font-black text-[#080f2a] py-6 hover:no-underline text-lg">
                                 {faq.q}
                             </AccordionTrigger>
                             <AccordionContent className="text-slate-600 font-medium pb-6 leading-relaxed">
@@ -414,7 +380,7 @@ const FAQSection = () => (
 const FooterCTA = () => (
     <section className="py-20">
         <div className="container px-4">
-            <div className="bg-gradient-to-r from-[#0E4FA5] to-[#2563EB] rounded-[50px] p-12 md:p-20 text-center text-white relative overflow-hidden shadow-2xl">
+            <div className="bg-gradient-to-r from-[#080f2a] to-[#1a3d8f] rounded-[50px] p-12 md:p-20 text-center text-white relative overflow-hidden shadow-2xl">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl" />
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-400/20 rounded-full -ml-32 -mb-32 blur-3xl" />
 
@@ -441,7 +407,7 @@ const FooterCTA = () => (
 const SketchupPlanes = () => {
     return (
         <div className="min-h-screen bg-white">
-            <Header />
+            <GlobalHeader rightContent={<SketchupRightContent />} />
             <main>
                 <Hero />
                 <TrimbleSection />
